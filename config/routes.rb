@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'backoffice/index'
   resources :jobs
   get 'home/index'
   resources :trainings
