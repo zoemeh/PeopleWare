@@ -8,7 +8,6 @@ module.exports = {
     './app/javascript/**/*.js'
   ],
   plugins: [
-    require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
   ]
 }
