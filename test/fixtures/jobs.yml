@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  risk_level: MyString
+  wage_min: 1.5
+  wage_max: 1.5
+  status: MyString
+
+two:
+  name: MyString
+  risk_level: MyString
+  wage_min: 1.5
+  wage_max: 1.5
+  status: MyString
