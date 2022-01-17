@@ -1,0 +1,29 @@
+h1 Listing trainings
+
+table.table
+  thead
+    tr
+      th Description
+      th Level
+      th From at
+      th To at
+      th Institution
+      th
+      th
+      th
+
+  tbody
+    - @trainings.each do |training|
+      tr
+        td = training.description
+        td = training.level
+        td = training.from_at
+        td = training.to_at
+        td = training.institution
+        td = link_to 'Show', training
+        td = link_to 'Edit', edit_training_path(training)
+        td = link_to 'Destroy', training, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Training', new_training_path

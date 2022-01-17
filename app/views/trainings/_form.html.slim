@@ -1,0 +1,13 @@
+= simple_form_for(@training) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :description
+    = f.input :level
+    = f.input :from_at
+    = f.input :to_at
+    = f.input :institution
+
+  .form-actions
+    = f.button :submit

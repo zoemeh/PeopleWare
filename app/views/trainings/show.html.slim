@@ -1,0 +1,25 @@
+p#notice = notice
+
+p
+  strong Description:
+  = @training.description
+
+p
+  strong Level:
+  = @training.level
+
+p
+  strong From at:
+  = @training.from_at
+
+p
+  strong To at:
+  = @training.to_at
+
+p
+  strong Institution:
+  = @training.institution
+
+=> link_to 'Edit', edit_training_path(@training)
+'|
+=< link_to 'Back', trainings_path
