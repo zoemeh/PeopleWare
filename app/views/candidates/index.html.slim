@@ -1,0 +1,29 @@
+h1 Listing candidates
+
+table
+  thead
+    tr
+      th Cedula
+      th Name
+      th Job
+      th Desired wage
+      th Recommended by
+      th
+      th
+      th
+
+  tbody
+    - @candidates.each do |candidate|
+      tr
+        td = candidate.cedula
+        td = candidate.name
+        td = candidate.job
+        td = candidate.desired_wage
+        td = candidate.recommended_by
+        td = link_to 'Show', candidate
+        td = link_to 'Edit', edit_candidate_path(candidate)
+        td = link_to 'Destroy', candidate, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Candidate', new_candidate_path

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_081032) do
+ActiveRecord::Schema.define(version: 2022_01_19_104409) do
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "cedula"
+    t.string "name"
+    t.integer "job_id", null: false
+    t.float "desired_wage"
+    t.string "recommended_by"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id"], name: "index_candidates_on_job_id"
+  end
 
   create_table "jobs", force: :cascade do |t|
     t.string "name"
@@ -50,4 +61,5 @@ ActiveRecord::Schema.define(version: 2022_01_17_081032) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "candidates", "jobs"
 end

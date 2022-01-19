@@ -1,0 +1,25 @@
+p#notice = notice
+
+p
+  strong Cedula:
+  = @candidate.cedula
+
+p
+  strong Name:
+  = @candidate.name
+
+p
+  strong Job:
+  = @candidate.job
+
+p
+  strong Desired wage:
+  = @candidate.desired_wage
+
+p
+  strong Recommended by:
+  = @candidate.recommended_by
+
+=> link_to 'Edit', edit_candidate_path(@candidate)
+'|
+=< link_to 'Back', candidates_path

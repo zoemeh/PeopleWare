@@ -1,0 +1,13 @@
+= simple_form_for(@candidate) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :cedula
+    = f.input :name
+    = f.association :job
+    = f.input :desired_wage
+    = f.input :recommended_by
+
+  .form-actions
+    = f.button :submit
