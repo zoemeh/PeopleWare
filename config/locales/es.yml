@@ -1,0 +1,59 @@
+es:
+  code: Código
+  name: nombre
+  description: Descripción
+  status: Estado
+  activerecord:
+    models:
+      skill:
+        one: competencia
+        other: competencias
+      language:
+        one: idioma
+        other: idiomas
+      training:
+        one: capacitacion
+        other: capacitaciones
+      job:
+        one: puesto
+        other: puestos
+    attributes:
+      skill:
+        id: código
+        description: descripción
+        status: estado
+      language:
+        id: código
+        description: descripción
+        status: estado
+      training:
+        id: código
+        description: descripción
+        level: nivel
+        from_at: fecha desde
+        to_at: fecha hasta
+        institution: institución
+      job:
+        wage_max: salario máximo
+        wage_min: salario minimo
+  back: atras
+  show: mostrar
+  edit: editar
+  destroy: eliminar
+  new skill: nueva competencia
+  editing skill: editando competencia
+  listing skills: listado de competencias
+  available jobs: vacantantes disponibles
+  new language: nuevo lenguaje
+  listing languages: listado de lenguajes
+  listing trainings: listado de capacitaciones
+  id: código
+  active: activo
+  inactive: inactivo
+  low: bajo
+  medium: medio
+  high: alto
+  should be greater than min wage: debe ser mayor a salario minimo
+  apply: aplicar
+  home: inicio
+  login: iniciar sesión

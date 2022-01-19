@@ -1,5 +1,7 @@
-h1 New language
+.card 
+    .card-body
+        h1.card-title = t('New language')
+        .card-text
+            == render 'form'
 
-== render 'form'
-
-= link_to 'Back', languages_path
+            = link_to t('Back'), languages_path, class: "btn btn-secondary"

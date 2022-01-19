@@ -4,10 +4,11 @@
 
   .form-inputs
     = f.input :name
-    = f.input :risk_level
+    = f.input :risk_level, collection: [[t('low'), :low], [ t('medium'), :medium], [t('high'), :high]], selected: :low
     = f.input :wage_min
     = f.input :wage_max
-    = f.input :status
+    = f.input :status, collection: [:active, :inactive], selected: :active
+
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-success'

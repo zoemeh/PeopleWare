@@ -1,6 +1,6 @@
-h1 Listing jobs
+h1 = t('listing jobs')
 
-table
+table.table
   thead
     tr
       th Name
@@ -22,8 +22,8 @@ table
         td = job.status
         td = link_to 'Show', job
         td = link_to 'Edit', edit_job_path(job)
-        td = link_to 'Destroy', job, data: { confirm: 'Are you sure?' }, method: :delete
+        td = button_to 'Destroy', job, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Job', new_job_path
+= link_to 'New Job', new_job_path, class: 'btn btn-primary'

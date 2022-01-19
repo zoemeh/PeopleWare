@@ -1,17 +1,16 @@
 p#notice = notice
+.card 
+  .card-body
+    h5.card-title = "#{t('code')}: #{@skill.id}"
+    .card-text
+      p
+        strong = "#{t('description').titleize}:"
+        = @skill.description
 
-p
-  strong Code:
-  = @skill.code
+      p
+        strong = "#{t('status').titleize}:"
+        = @skill.status
 
-p
-  strong Description:
-  = @skill.description
-
-p
-  strong Status:
-  = @skill.status
-
-=> link_to 'Edit', edit_skill_path(@skill)
-'|
-=< link_to 'Back', skills_path
+      => link_to t('edit').titleize, edit_skill_path(@skill)
+      '|
+      =< link_to t('back').titleize, skills_path

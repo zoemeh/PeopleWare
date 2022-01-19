@@ -1,2 +1,9 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+.row.row-cols-1 
+    h1 = t('available jobs').titleize
+    - @jobs.each do |job|
+        .col.gy-3
+            .card 
+                .card-body 
+                    h5.card-title = job.name 
+                    p.card-text Descripcion del trabajo 
+                    a.btn.btn-primary href=apply_job_path(job) = t("apply").capitalize

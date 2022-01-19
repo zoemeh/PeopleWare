@@ -1,7 +1,8 @@
-h1 Editing skill
-
-== render 'form'
-
-=> link_to 'Show', @skill
-'|
-=< link_to 'Back', skills_path
+.card 
+    .card-body 
+        h1.card-title = t('editing skill').titleize
+        .card-text
+            == render 'form'
+            .btn-group
+                => link_to t('show').titleize, @skill, class: 'btn btn-primary'
+                =< link_to t('back').titleize, skills_path, class: 'btn btn-secondary'

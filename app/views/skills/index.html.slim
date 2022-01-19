@@ -1,11 +1,11 @@
-h1 Listing skills
+h1 = t('listing skills').titleize
 
 table.table
   thead
     tr
-      th Code
-      th Description
-      th Status
+      th = t("id").titleize
+      th = t("description").titleize
+      th = t("status").titleize
       th
       th
       th
@@ -13,13 +13,13 @@ table.table
   tbody
     - @skills.each do |skill|
       tr
-        td = skill.code
+        td = skill.id
         td = skill.description
-        td = skill.status
-        td = link_to 'Show', skill, class: "btn btn-primary"
-        td = link_to 'Edit', edit_skill_path(skill), class: "btn btn-primary"
-        td = button_to 'Destroy', skill, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
+        td = t(skill.status)
+        td = link_to t('show').titleize, skill, class: "btn btn-primary"
+        td = link_to t('edit').titleize, edit_skill_path(skill), class: "btn btn-primary"
+        td = button_to t('destroy').titleize, skill, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
 
 br
 
-= link_to 'New Skill', new_skill_path
+= link_to t('new skill').titleize, new_skill_path, class: "btn btn-primary"

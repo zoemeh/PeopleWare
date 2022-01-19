@@ -1,13 +1,13 @@
-h1 Listing trainings
+h1 = t('listing trainings').titleize
 
 table.table
   thead
     tr
-      th Description
-      th Level
-      th From at
-      th To at
-      th Institution
+      th = t('activerecord.attributes.training.description').titleize
+      th = t('activerecord.attributes.training.level').titleize
+      th = t('activerecord.attributes.training.from_at').titleize
+      th = t('activerecord.attributes.training.to_at').titleize
+      th = t('activerecord.attributes.training.institution').titleize
       th
       th
       th

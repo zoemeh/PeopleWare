@@ -1,7 +1,8 @@
-h1 Editing language
-
-== render 'form'
-
-=> link_to 'Show', @language
-'|
-=< link_to 'Back', languages_path
+.card
+    .card-body
+        h1.card-title Editing language
+        .card-text
+            == render 'form'
+            .btn-group
+                => link_to 'Show', @language, class: 'btn btn-primary'
+                =< link_to 'Back', languages_path, class: 'btn btn-secondary'
