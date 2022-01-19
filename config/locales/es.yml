@@ -17,6 +17,9 @@ es:
       job:
         one: puesto
         other: puestos
+      candidate:
+        one: candidato
+        other: candidatos
     attributes:
       skill:
         id: código
@@ -36,6 +39,12 @@ es:
       job:
         wage_max: salario máximo
         wage_min: salario minimo
+      candidate:
+        cedula: cedula
+        name: nombre
+        job: puesto
+        desired_wage: salario deseado
+        recommended_by: recomendado por
   back: atras
   show: mostrar
   edit: editar
