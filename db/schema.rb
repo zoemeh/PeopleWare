@@ -45,12 +45,10 @@ ActiveRecord::Schema.define(version: 2022_01_19_104409) do
   end
 
   create_table "skills", force: :cascade do |t|
-    t.string "code"
     t.string "description"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["code"], name: "index_skills_on_code", unique: true
   end
 
   create_table "trainings", force: :cascade do |t|
@@ -59,9 +57,12 @@ ActiveRecord::Schema.define(version: 2022_01_19_104409) do
     t.date "from_at"
     t.date "to_at"
     t.string "institution"
+    t.integer "candidate_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["candidate_id"], name: "index_trainings_on_candidate_id"
   end
 
   add_foreign_key "candidates", "jobs"
+  add_foreign_key "trainings", "candidates"
 end

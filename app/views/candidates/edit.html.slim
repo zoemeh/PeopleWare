@@ -1,7 +1,6 @@
-h1 Editing candidate
+h1 = t("editing candidate")
 
 == render 'form'
 
-=> link_to 'Show', @candidate
-'|
-=< link_to 'Back', candidates_path
+=> link_to t('show'), @candidate, class: "btn btn-primary"
+=< link_to t('back'), candidates_path, class: "btn btn-secondary"

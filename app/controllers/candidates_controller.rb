@@ -22,7 +22,6 @@ class CandidatesController < ApplicationController
   # POST /candidates or /candidates.json
   def create
     @candidate = Candidate.new(candidate_params)
-    binding.pry
     respond_to do |format|
       if @candidate.save
         format.html { redirect_to candidate_url(@candidate), notice: "Candidate was successfully created." }
@@ -66,6 +65,7 @@ class CandidatesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def candidate_params
       params.require(:candidate).permit(:cedula, :name, :job_id, :desired_wage, :recommended_by, 
-        experience: [:company, :job, :to, :from, :wage])
+        experience: [:company, :job, :to, :from, :wage], 
+        trainings_attributes: [:id, :description, :level, :institution, :from_at, :to_at])
     end
 end

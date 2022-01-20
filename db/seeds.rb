@@ -6,7 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Language.create(code: "ES", name: "Español", status: "active")
-Language.create(code: "EN", name: "Ingles", status: "active")
-Language.create(code: "DE", name: "Aleman", status: "active")
-Language.create(code: "FR", name: "Frances", status: "active")
+["Español", "Ingles", "Aleman", "Frances"].each do |x|
+  Language.create(name: x, status: "active")
+end
+
+["Manejor de Recursos Humanos", "Uso de Herramientas Ofimaticas", 
+  "Gestion de Presupusto", "Hablar en publico"].each do |x|
+  Skill.create(description: x, status: "active")
+end

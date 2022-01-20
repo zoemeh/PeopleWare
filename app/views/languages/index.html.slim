@@ -3,7 +3,7 @@ h1 = t('listing languages').titleize
 table.table
   thead
     tr
-      th = t('code').titleize
+      th = t('id').titleize
       th = t('name').titleize
       th = t('status').titleize
       th
@@ -13,9 +13,9 @@ table.table
   tbody
     - @languages.each do |language|
       tr
-        td = language.code
+        td = language.id
         td = language.name
-        td = language.status
+        td = language.status == "active" ? "✅" : "❌"
         td = link_to t('show'), language, class: "btn btn-primary"
         td = link_to t('edit'), edit_language_path(language), class: "btn btn-primary"
         td = button_to t('destroy'), language, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-secondary"

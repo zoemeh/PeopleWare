@@ -1,8 +1,8 @@
 es:
-  code: Código
+  code: código
   name: nombre
-  description: Descripción
-  status: Estado
+  description: descripción
+  status: estado
   activerecord:
     models:
       skill:
@@ -67,3 +67,6 @@ es:
   home: inicio
   login: iniciar sesión
   experience: experiencia
+  trainings: capacitaciones
+  from: desde
+  to: hasta
