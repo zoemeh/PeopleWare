@@ -4,4 +4,6 @@ class Job < ApplicationRecord
   validates :wage_min, presence: true, numericality: true
   validates :wage_max, presence: true, numericality: {greater_than: proc { |r| r.wage_min }, message: I18n.t("should be greater than min wage")}
   validates :status, presence: true, inclusion: {in: %w{active inactive}}
+
+  has_many :candidate
 end

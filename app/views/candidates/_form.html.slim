@@ -9,5 +9,16 @@
     = f.input :desired_wage
     = f.input :recommended_by
 
+  h3 = t('experience').capitalize
+  - (1..3).each do
+    .input-group.mb-3
+      input.form-control type="text" placeholder="Empresa" name="candidate[experience][][company]"
+      input.form-control type="text" placeholder="Puesto Ocupado" name="candidate[experience][][job]"
+      span.input-group-text Desde
+      input.form-control type="date" placeholder="Desde" name="candidate[experience][][from]"
+      span.input-group-text Hasta
+      input.form-control type="date" placeholder="Hasta" name="candidate[experience][][to]"
+      input.form-control type="text" placeholder="Salario" name="candidate[experience][][wage]"
+
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-success'

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_104409) do
     t.integer "job_id", null: false
     t.float "desired_wage"
     t.string "recommended_by"
+    t.json "experience"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["job_id"], name: "index_candidates_on_job_id"
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_104409) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_languages_on_code", unique: true
+    t.index ["name"], name: "index_languages_on_name", unique: true
   end
 
   create_table "skills", force: :cascade do |t|
