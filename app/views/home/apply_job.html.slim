@@ -1,0 +1,49 @@
+= simple_form_for(@candidate) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :cedula
+    = f.input :name
+    = f.association :job, selected: @job, readonly: true
+    = f.input :desired_wage
+    = f.input :recommended_by
+    = f.association :languages, as: :check_boxes, legend_tag: "label"
+  h3 = t("trainings").capitalize
+  - (@candidate.trainings + [Training.new]).each do |t|
+    .mb-3
+      .input-group.mb-3 
+        input.form-control type="hidden" name="candidate[trainings_attributes][][id]" value=t.id
+        span.input-group-text = t('activerecord.attributes.training.description').capitalize
+        input.form-control type="text" name="candidate[trainings_attributes][][description]" value=t.description
+        span.input-group-text = t('activerecord.attributes.training.level').capitalize
+        select.form-select.form-control name="candidate[trainings_attributes][][level]"
+          option selected=("selected" if t.level == "grade") grado 
+          option selected=("selected" if t.level == "postgrade") post-grado
+          option selected=("selected" if t.level == "masters") maestria 
+          option selected=("selected" if t.level == "phd") doctorado 
+          option selected=("selected" if t.level == "technical") tecnico 
+          option selected=("selected" if t.level == "managment") gestion
+      .input-group.mb-3 
+        span.input-group-text = t('activerecord.attributes.training.institution').capitalize
+        input.form-control type="text" name="candidate[trainings_attributes][][institution]" value=t.institution
+        span.input-group-text = t('activerecord.attributes.training.from_at').capitalize
+        input.form-control type="date" name="candidate[trainings_attributes][][from_at]" value=t.from_at
+        span.input-group-text = t('activerecord.attributes.training.to_at').capitalize
+        input.form-control type="date" name="candidate[trainings_attributes][][to_at]" value=t.to_at
+        a.btn.btn-danger = t("destroy").capitalize
+  a.btn.btn-primary.mb-3 href="#" = t("new skill").titleize
+
+  h3 = t('experience').capitalize
+  - (1..3).each do
+    .input-group.mb-3
+      input.form-control type="text" placeholder="Empresa" name="candidate[experience][][company]"
+      input.form-control type="text" placeholder="Puesto Ocupado" name="candidate[experience][][job]"
+      span.input-group-text Desde
+      input.form-control type="date" placeholder="Desde" name="candidate[experience][][from]"
+      span.input-group-text Hasta
+      input.form-control type="date" placeholder="Hasta" name="candidate[experience][][to]"
+      input.form-control type="text" placeholder="Salario" name="candidate[experience][][wage]"
+
+  .form-actions
+    = f.button :submit, "Aplicar", class: 'btn btn-success'

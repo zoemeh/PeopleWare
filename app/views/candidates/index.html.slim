@@ -1,13 +1,13 @@
-h1 Listing candidates
+h1 = t("listing candidates").titleize
 
-table
+table.table
   thead
     tr
       th Cedula
-      th Name
-      th Job
-      th Desired wage
-      th Recommended by
+      th = t("activerecord.attributes.candidate.name").capitalize
+      th = t("activerecord.attributes.candidate.job").capitalize
+      th = t("activerecord.attributes.candidate.desired_wage").capitalize
+      th = t("activerecord.attributes.candidate.recommended_by").capitalize
       th
       th
       th
@@ -20,10 +20,10 @@ table
         td = candidate.job.name
         td = candidate.desired_wage
         td = candidate.recommended_by
-        td = link_to 'Show', candidate
-        td = link_to 'Edit', edit_candidate_path(candidate)
-        td = link_to 'Destroy', candidate, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to t('show').capitalize, candidate, class: "btn btn-primary"
+        td = link_to t('edit').capitalize, edit_candidate_path(candidate), class: "btn btn-success"
+        td = link_to t('destroy').capitalize, candidate, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
 
 br
 
-= link_to 'New Candidate', new_candidate_path, class: "btn btn-primary"
+= link_to t('new candidate').titleize, new_candidate_path, class: "btn btn-primary"

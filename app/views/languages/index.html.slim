@@ -16,9 +16,9 @@ table.table
         td = language.id
         td = language.name
         td = language.status == "active" ? "✅" : "❌"
-        td = link_to t('show'), language, class: "btn btn-primary"
-        td = link_to t('edit'), edit_language_path(language), class: "btn btn-primary"
-        td = button_to t('destroy'), language, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-secondary"
+        td = link_to t('show').capitalize, language, class: "btn btn-primary"
+        td = link_to t('edit').capitalize, edit_language_path(language), class: "btn btn-primary"
+        td = button_to t('destroy').capitalize, language, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
 
 br
 

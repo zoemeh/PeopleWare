@@ -3,11 +3,11 @@ h1 = t('listing jobs')
 table.table
   thead
     tr
-      th Name
-      th Risk level
-      th Wage min
-      th Wage max
-      th Status
+      th = t("name").capitalize
+      th = t("activerecord.attributes.job.risk_level").capitalize
+      th = t("activerecord.attributes.job.wage_min").capitalize
+      th = t("activerecord.attributes.job.wage_max").capitalize
+      th = t("status").capitalize
       th
       th
       th
@@ -16,14 +16,14 @@ table.table
     - @jobs.each do |job|
       tr
         td = job.name
-        td = job.risk_level
+        td = t(job.risk_level)
         td = job.wage_min
         td = job.wage_max
-        td = job.status
-        td = link_to 'Show', job
-        td = link_to 'Edit', edit_job_path(job)
-        td = button_to 'Destroy', job, data: { confirm: 'Are you sure?' }, method: :delete
+        td = t(job.status)
+        td = link_to t('show').capitalize, job, class: "btn btn-primary"
+        td = link_to t('edit').capitalize, edit_job_path(job), class: "btn btn-success"
+        td = button_to t('destroy').capitalize, job, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
 
 br
 
-= link_to 'New Job', new_job_path, class: 'btn btn-primary'
+= link_to t('new job').titleize, new_job_path, class: 'btn btn-primary'

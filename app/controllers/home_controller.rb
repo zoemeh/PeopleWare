@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   end
 
   def apply_job
+    @candidate = Candidate.new
     @job = Job.find(params[:id])
   end
 end

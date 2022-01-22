@@ -1,8 +1,8 @@
 .card
     .card-body
-        h1.card-title Editing language
+        h1.card-title = t("editing language").titleize
         .card-text
             == render 'form'
             .btn-group
-                => link_to 'Show', @language, class: 'btn btn-primary'
-                =< link_to 'Back', languages_path, class: 'btn btn-secondary'
+                => link_to t('show').titleize, @language, class: 'btn btn-primary'
+                =< link_to t('back').titleize, languages_path, class: 'btn btn-secondary'

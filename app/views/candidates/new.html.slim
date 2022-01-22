@@ -1,5 +1,6 @@
-h1 New candidate
-
-== render 'form'
-
-= link_to 'Back', candidates_path
+.card 
+    .card-body 
+        h1.card-title = t("new candidate").titleize
+        .card-text
+            == render 'form'
+            = link_to t('back').titleize, candidates_path, class: "btn btn-secondary"

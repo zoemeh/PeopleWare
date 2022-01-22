@@ -1,25 +1,32 @@
 p#notice = notice
+.card
+  .card-body 
+    h5.card-title = "#{t('activerecord.models.candidate.one').titleize}: #{@candidate.name}"
+    .card-text
+      p
+        strong Cedula:
+        = @candidate.cedula
 
-p
-  strong Cedula:
-  = @candidate.cedula
+      p
+        strong = t("activerecord.attributes.candidate.name").capitalize
+        | :
+        = @candidate.name
 
-p
-  strong Name:
-  = @candidate.name
+      p
+        strong = t("activerecord.attributes.candidate.job").capitalize
+        | :
+        = @candidate.job.name
 
-p
-  strong Job:
-  = @candidate.job
+      p
+        strong = t("activerecord.attributes.candidate.desired_wage").capitalize
+        | :
+        = @candidate.desired_wage
 
-p
-  strong Desired wage:
-  = @candidate.desired_wage
+      p
+        strong = t("activerecord.attributes.candidate.recommended_by").capitalize
+        | :
+        = @candidate.recommended_by.nil? ? @candidate.recommended_by : "N/A"
 
-p
-  strong Recommended by:
-  = @candidate.recommended_by
-
-=> link_to 'Edit', edit_candidate_path(@candidate)
-'|
-=< link_to 'Back', candidates_path
+      btn-group role="group"
+        => link_to t('edit').titleize, edit_candidate_path(@candidate), class: "btn btn-primary"
+        =< link_to t('back').titleize, candidates_path, class: "btn btn-secondary"

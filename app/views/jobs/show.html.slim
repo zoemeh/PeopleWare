@@ -1,25 +1,33 @@
 p#notice = notice
+.card
+  .card-body 
+    h5.card-title = "#{t('job').titleize}: #{@job.name}"
+    .card-text
+      p
+        strong = t("name").capitalize
+        | :
+        = @job.name
 
-p
-  strong Name:
-  = @job.name
+      p
+        strong = t("activerecord.attributes.job.risk_level").capitalize
+        | :
+        = @job.risk_level
 
-p
-  strong Risk level:
-  = @job.risk_level
+      p
+        strong = t("activerecord.attributes.job.wage_min").capitalize
+        | :
+        = @job.wage_min
 
-p
-  strong Wage min:
-  = @job.wage_min
+      p
+        strong = t("activerecord.attributes.job.wage_max").capitalize
+        | :
+        = @job.wage_max
 
-p
-  strong Wage max:
-  = @job.wage_max
+      p
+        strong = t("status").capitalize
+        | :
+        = @job.status
 
-p
-  strong Status:
-  = @job.status
-
-=> link_to 'Edit', edit_job_path(@job)
-'|
-=< link_to 'Back', jobs_path
+      .btn-group role="group"
+        => link_to t('edit').titleize, edit_job_path(@job), class: "btn btn-primary"
+        =< link_to t('back').titleize, jobs_path, class: "btn btn-secondary"

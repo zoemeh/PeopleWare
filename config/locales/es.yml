@@ -39,6 +39,9 @@ es:
       job:
         wage_max: salario máximo
         wage_min: salario minimo
+        risk_level: nivel de riesgo
+        name: nombre
+        status: estado
       candidate:
         cedula: cedula
         name: nombre
@@ -70,3 +73,12 @@ es:
   trainings: capacitaciones
   from: desde
   to: hasta
+  editing language: editando idioma
+  new training: nueva capacitación
+  new job: nuevo puesto
+  editing job: editando puesto
+  job: puesto
+  new candidate: nuevo candidato
+  listing candidates: lista de candidatos
+  editing candidate: editando candidato
+  new candidate: nuevo candidato
