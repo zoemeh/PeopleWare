@@ -36,14 +36,14 @@ ActiveRecord::Schema.define(version: 2022_01_22_172229) do
     t.string "risk_level"
     t.float "wage_min"
     t.float "wage_max"
-    t.string "status"
+    t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
-    t.string "status"
+    t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_languages_on_name", unique: true
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_172229) do
 
   create_table "skills", force: :cascade do |t|
     t.string "description"
-    t.string "status"
+    t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

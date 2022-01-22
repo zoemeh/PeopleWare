@@ -5,7 +5,8 @@
   .form-inputs
     = f.input :cedula
     = f.input :name
-    = f.association :job, selected: @job, readonly: true
+    = f.association :job, selected: @job.id, disabled: true
+    input type="hidden" name="candidate[job_id]" value=@job.id
     = f.input :desired_wage
     = f.input :recommended_by
     = f.association :languages, as: :check_boxes, legend_tag: "label"

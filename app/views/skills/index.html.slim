@@ -15,7 +15,7 @@ table.table
       tr
         td = skill.id
         td = skill.description
-        td = skill.status == "active" ? "✅" : "❌"
+        td = skill.status ? "✅" : "❌"
         td = link_to t('show').titleize, skill, class: "btn btn-primary"
         td = link_to t('edit').titleize, edit_skill_path(skill), class: "btn btn-primary"
         td = button_to t('destroy').titleize, skill, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
