@@ -17,3 +17,6 @@ end
 
 j = Job.create(name: "Programador", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
 Candidate.create(cedula: "001", name: "Fulano de tal", job_id: j.id, desired_wage: 10)
+
+c = Candidate.create(name: "Fulano de Tal", cedula: "0013454123", job_id: j.id, desired_wage: 15.0)
+c.language_ids = [1,2]

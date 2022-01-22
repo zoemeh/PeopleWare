@@ -56,6 +56,7 @@ gem "view_component"
 gem "slim-rails"
 gem 'simple_form'
 gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
+gem "clearance"
 
 
 group :development, :test do
