@@ -14,3 +14,6 @@ end
   "Gestion de Presupusto", "Hablar en publico"].each do |x|
   Skill.create(description: x, status: "active")
 end
+
+j = Job.create(name: "Programador", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
+Candidate.create(cedula: "001", name: "Fulano de tal", job_id: j.id, desired_wage: 10)
