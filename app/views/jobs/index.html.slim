@@ -1,4 +1,5 @@
 h1 = t('listing jobs')
+= link_to t('new job').titleize, new_job_path, class: 'btn btn-primary'
 
 table.table
   thead
@@ -11,6 +12,7 @@ table.table
       th
       th
       th
+      th
 
   tbody
     - @jobs.each do |job|
@@ -20,10 +22,9 @@ table.table
         td = job.wage_min
         td = job.wage_max
         td = job.status ? "✅" : "❌"
+        td
+          a.btn.btn-primary href="#" Ver Candidatos
         td = link_to t('show').capitalize, job, class: "btn btn-primary"
         td = link_to t('edit').capitalize, edit_job_path(job), class: "btn btn-success"
         td = button_to t('destroy').capitalize, job, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
 
-br
-
-= link_to t('new job').titleize, new_job_path, class: 'btn btn-primary'

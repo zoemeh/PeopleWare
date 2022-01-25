@@ -6,6 +6,10 @@ class Candidate < ApplicationRecord
     attributes["description"].blank? || attributes["institution"].blank?
   }
 
+  validates :name, presence: true
+  validates :cedula, presence: true
+  validates :desired_wage, presence: true, numericality: true
+
   def has_language?(lang)
     language_ids.all?(lang.id)
   end

@@ -3,6 +3,7 @@ h1 = t('listing trainings').titleize
 table.table
   thead
     tr
+      th = t("activerecord.models.candidate.one").titleize
       th = t('activerecord.attributes.training.description').titleize
       th = t('activerecord.attributes.training.level').titleize
       th = t('activerecord.attributes.training.from_at').titleize
@@ -15,14 +16,15 @@ table.table
   tbody
     - @trainings.each do |training|
       tr
+        td = training.candidate.name
         td = training.description
         td = training.level
         td = training.from_at
         td = training.to_at
         td = training.institution
-        td = link_to 'Show', training
-        td = link_to 'Edit', edit_training_path(training)
-        td = link_to 'Destroy', training, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Show', training, class: "btn btn-primary"
+        td = link_to 'Edit', edit_training_path(training), class: "btn btn-success"
+        td = button_to 'Destroy', training, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
 
 br
 
