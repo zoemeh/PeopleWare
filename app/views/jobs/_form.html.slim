@@ -4,6 +4,7 @@
 
   .form-inputs.mb-3
     = f.input :name
+    = f.input :department
     = f.input :risk_level, collection: [[t('low'), :low], [ t('medium'), :medium], [t('high'), :high]], selected: :low
     = f.input :wage_min
     = f.input :wage_max

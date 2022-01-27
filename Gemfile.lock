@@ -129,6 +129,7 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
+    ffaker (2.20.0)
     ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -314,6 +315,7 @@ DEPENDENCIES
   clearance
   cssbundling-rails
   debug
+  ffaker
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails

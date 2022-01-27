@@ -14,14 +14,16 @@ end
   "Gestion de Presupusto", "Hablar en publico"].each do |x|
   Skill.create(description: x, status: true)
 end
+jobs = []
+jobs.push Job.create(name: "Programador", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
+jobs.push Job.create(name: "Contador", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
+jobs.push Job.create(name: "Diseñador gráfico", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
+jobs.push Job.create(name: "Arquitecto", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
 
-j = Job.create(name: "Programador", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
-j = Job.create(name: "Contador", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
-j = Job.create(name: "Diseñador gráfico", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
-j = Job.create(name: "Arquitecto", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
-
-c = Candidate.create(name: "Fulano de Tal", cedula: "0013454123", job_id: j.id, desired_wage: 15.0)
-c.language_ids = [1,2]
-Training.create(description: "Certificado CCNA", level: "technical", from_at: Date.today, to_at: Date.today, institution: "ITLA", candidate: c);
-
+candidates = (1..20).map do 
+  c = Candidate.create(name: FFaker::Name.unique.name, cedula: "0013454123", job_id: jobs.sample.id, desired_wage: 15.0)
+  c.language_ids = [1,2]
+  c
+end
+Training.create(description: "Certificado CCNA", level: "technical", from_at: Date.today, to_at: Date.today, institution: "ITLA", candidate: candidates.sample);
 u = User.create(email: "admin@admin.com", password: "123")

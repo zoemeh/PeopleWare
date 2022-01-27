@@ -41,6 +41,7 @@ es:
         wage_min: salario minimo
         risk_level: nivel de riesgo
         name: nombre
+        department: departamento
         status: estado
       candidate:
         cedula: cedula
@@ -76,10 +77,10 @@ es:
   editing language: editando idioma
   new training: nueva capacitación
   new job: nuevo puesto
+  listing jobs: listado de puestos
   editing job: editando puesto
   job: puesto
   new candidate: nuevo candidato
   listing candidates: lista de candidatos
   editing candidate: editando candidato
-  new candidate: nuevo candidato
   logout: salir

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_172229) do
+ActiveRecord::Schema.define(version: 2022_01_25_151748) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "cedula"
@@ -31,8 +31,16 @@ ActiveRecord::Schema.define(version: 2022_01_22_172229) do
     t.index ["language_id"], name: "index_candidates_languages_on_language_id"
   end
 
+  create_table "candidates_skills", id: false, force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "skill_id"
+    t.index ["candidate_id"], name: "index_candidates_skills_on_candidate_id"
+    t.index ["skill_id"], name: "index_candidates_skills_on_skill_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "name"
+    t.string "department"
     t.string "risk_level"
     t.float "wage_min"
     t.float "wage_max"

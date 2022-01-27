@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :candidates
   get 'backoffice/index'
   resources :jobs
+  get '/jobs/:id/candidates', to: "jobs#candidates", as: "job_candidates"
   get 'home/index'
   get '/apply/:id', to: 'home#apply_job', as: "apply_job"
   resources :trainings
