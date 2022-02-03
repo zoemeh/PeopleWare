@@ -45,8 +45,10 @@ ActiveRecord::Schema.define(version: 2022_01_25_151748) do
     t.float "wage_min"
     t.float "wage_max"
     t.boolean "status"
+    t.integer "candidate_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["candidate_id"], name: "index_jobs_on_candidate_id"
   end
 
   create_table "languages", force: :cascade do |t|

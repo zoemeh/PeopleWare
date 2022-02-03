@@ -1,0 +1,27 @@
+.row
+    .col
+        .card 
+            .card-body 
+                h5.card-title Candidato Seleccionado 
+                .card-text.mb-2
+                    - if @job.candidate.nil?
+                        p ninguno
+                    - else 
+                        = link_to @job.candidate.name, @job.candidate
+                a.btn.btn-danger href="#" Deseleccionar
+    .col
+        .card 
+            .card-body 
+                h5.card-title Candidatos 
+                table.table
+                    thead 
+                        tr 
+                            th Candidato
+                            th
+                            th
+                    tbody 
+                        - @job.candidates.each do |candidate|
+                            tr 
+                                td = candidate.name
+                                td = link_to t("show").capitalize, candidate, class: "btn btn-primary"
+                                td = link_to "Seleccionar", job_select_candidate_path(id: @job.id, candidate_id: candidate.id), class: "btn btn-success #{@job.candidate.nil? ? '' : 'disabled'}"

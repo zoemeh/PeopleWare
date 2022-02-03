@@ -7,7 +7,7 @@ class CreateJobs < ActiveRecord::Migration[7.0]
       t.float :wage_min
       t.float :wage_max
       t.boolean :status
-
+      t.references :candidate, foreign_key: false
       t.timestamps
     end
   end

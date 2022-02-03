@@ -1,6 +1,9 @@
 h1 = t('listing jobs')
 = link_to t('new job').titleize, new_job_path, class: 'btn btn-primary'
-
+ul.nav.nav-tabs
+  li.nav-item = link_to t("all"), jobs_path, class: "nav-link #{(current_page?(jobs_path) ? "active" : "")}"
+  li.nav-item = link_to t("fulfilled"), jobs_fulfilled_path, class: "nav-link #{(current_page?(jobs_fulfilled_path) ? "active" : "")}"
+  li.nav-item = link_to t("unfulfilled"), jobs_unfulfilled_path, class: "nav-link #{(current_page?(jobs_unfulfilled_path) ? "active" : "")}"
 table.table
   thead
     tr
@@ -9,8 +12,6 @@ table.table
       th = t("activerecord.attributes.job.wage_min").capitalize
       th = t("activerecord.attributes.job.wage_max").capitalize
       th = t("status").capitalize
-      th
-      th
       th
       th
 
@@ -23,10 +24,11 @@ table.table
         td = job.wage_max
         td = job.status ? "✅" : "❌"
         td
-          a.btn.btn-primary href=job_candidates_path(job) Ver Candidatos
-        td
           .btn-group 
+            a.btn.btn-primary href=job_selection_path(job) Proceso de Selección
+            a.btn.btn-secondary href=job_candidates_path(job) Ver Candidatos
             = link_to t('show').capitalize, job, class: "btn btn-primary"
             = link_to t('edit').capitalize, edit_job_path(job), class: "btn btn-success"
-            = button_to t('destroy').capitalize, job, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
+        td
+          = button_to t('destroy').capitalize, job, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
 

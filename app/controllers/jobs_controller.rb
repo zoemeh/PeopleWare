@@ -1,10 +1,24 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: %i[ show edit update destroy candidates ]
+  before_action :set_job, only: %i[ show edit update destroy candidates select_candidate selection_process ]
   before_action :require_login
 
   # GET /jobs or /jobs.json
   def index
     @jobs = Job.all
+  end
+
+  def fulfilled
+    @jobs = Job.where.not(candidate: nil)
+    render :index
+  end
+
+  def unfulfilled
+    @jobs = Job.where(candidate: nil)
+    render :index
+  end
+
+  def selection_process
+
   end
 
   # GET /jobs/1 or /jobs/1.json
@@ -13,6 +27,14 @@ class JobsController < ApplicationController
 
   def candidates
 
+  end
+
+  def select_candidate
+    @candidate = Candidate.find(params[:candidate_id])
+    if (not @candidate.nil?)
+      @job.candidate = @candidate
+      @job.save
+    end
   end
 
   # GET /jobs/new

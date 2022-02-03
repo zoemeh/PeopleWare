@@ -26,7 +26,7 @@ p#notice = notice
         strong = t("activerecord.attributes.candidate.recommended_by").capitalize
         | :
         = @candidate.recommended_by.nil? ? @candidate.recommended_by : "N/A"
-
-      btn-group role="group"
+      .btn-group role="group"
+        = link_to "Seleccionar Candidato", job_select_candidate_path(id: @candidate.job.id, candidate_id: @candidate.id), class: "btn btn-success"
         => link_to t('edit').titleize, edit_candidate_path(@candidate), class: "btn btn-primary"
         =< link_to t('back').titleize, candidates_path, class: "btn btn-secondary"

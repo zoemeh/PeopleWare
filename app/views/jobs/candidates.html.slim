@@ -1,0 +1,13 @@
+- @job.candidates.each do |candidate|
+
+h1 = "Candidatos para el puesto #{@job.name} en #{@job.department}"
+table.table
+    thead 
+        tr 
+            th Candidato
+            th
+    tbody 
+        - @job.candidates.each do |candidate|
+            tr 
+                td = candidate.name
+                td = link_to t("show").capitalize, candidate, class: "btn btn-primary"
