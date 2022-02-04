@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cedula: MyString
+  name: MyString
+  hired_date: 2022-02-03
+  job: one
+  wage: 1.5
+  status: false
+
+two:
+  cedula: MyString
+  name: MyString
+  hired_date: 2022-02-03
+  job: two
+  wage: 1.5
+  status: false

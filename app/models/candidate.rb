@@ -1,5 +1,6 @@
 class Candidate < ApplicationRecord
   belongs_to :job
+  has_one :employee
   has_many :trainings
   has_and_belongs_to_many :languages
   has_and_belongs_to_many :skills

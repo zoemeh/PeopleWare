@@ -31,10 +31,8 @@ class JobsController < ApplicationController
 
   def select_candidate
     @candidate = Candidate.find(params[:candidate_id])
-    if (not @candidate.nil?)
-      @job.candidate = @candidate
-      @job.save
-    end
+    @job.select_candidate(@candidate, params[:wage])
+    redirect_to @job
   end
 
   # GET /jobs/new

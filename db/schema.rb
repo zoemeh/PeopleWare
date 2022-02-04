@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_151748) do
+ActiveRecord::Schema.define(version: 2022_02_03_122730) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "cedula"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 2022_01_25_151748) do
     t.integer "skill_id"
     t.index ["candidate_id"], name: "index_candidates_skills_on_candidate_id"
     t.index ["skill_id"], name: "index_candidates_skills_on_skill_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "cedula"
+    t.string "name"
+    t.date "hired_date"
+    t.integer "job_id", null: false
+    t.integer "candidate_id", null: false
+    t.float "wage"
+    t.boolean "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["candidate_id"], name: "index_employees_on_candidate_id"
+    t.index ["job_id"], name: "index_employees_on_job_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -90,5 +104,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_151748) do
   end
 
   add_foreign_key "candidates", "jobs"
+  add_foreign_key "employees", "candidates"
+  add_foreign_key "employees", "jobs"
   add_foreign_key "trainings", "candidates"
 end

@@ -1,0 +1,29 @@
+p#notice = notice
+
+p
+  strong Cedula:
+  = @employee.cedula
+
+p
+  strong Name:
+  = @employee.name
+
+p
+  strong Hired date:
+  = @employee.hired_date
+
+p
+  strong Job:
+  = @employee.job
+
+p
+  strong Wage:
+  = @employee.wage
+
+p
+  strong Status:
+  = @employee.status
+
+=> link_to 'Edit', edit_employee_path(@employee)
+'|
+=< link_to 'Back', employees_path
