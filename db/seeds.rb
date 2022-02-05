@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-["Español", "Ingles", "Aleman", "Frances"].each do |x|
-  Language.create(name: x, status: true)
+langs = ["Español", "Ingles", "Aleman", "Frances"].map do |x|
+  Language.create(name: x, status: true).id
 end
 
-["Manejor de Recursos Humanos", "Uso de Herramientas Ofimaticas", 
-  "Gestion de Presupusto", "Hablar en publico"].each do |x|
-  Skill.create(description: x, status: true)
+skills = ["Manejor de Recursos Humanos", "Uso de Herramientas Ofimaticas", 
+  "Gestion de Presupusto", "Hablar en publico"].map do |x|
+  Skill.create(description: x, status: true).id
 end
 jobs = []
 jobs.push Job.create(name: "Programador", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
@@ -20,10 +20,21 @@ jobs.push Job.create(name: "Contador", department: "Tech", risk_level: "low", wa
 jobs.push Job.create(name: "Diseñador gráfico", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
 jobs.push Job.create(name: "Arquitecto", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
 
+wages = (1..10).map do |x| x*5000.0 end
+i = 0
 candidates = (1..20).map do 
-  c = Candidate.create(name: FFaker::Name.unique.name, cedula: "0013454123", job_id: jobs.sample.id, desired_wage: 15.0)
-  c.language_ids = [1,2]
+  i+=1
+  c = Candidate.create(name: FFaker::Name.unique.name, cedula: "00134541#{i.to_s.rjust(3,"0")}", job_id: jobs.sample.id, desired_wage: wages.sample)
+  c.language_ids = langs.sample(2)
+  c.skill_ids = skills.sample(2)
+  Training.create(description: "Certificado CCNA", level: "technical", from_at: Date.today - 30, to_at: Date.today , institution: "ITLA", candidate: c);
+  c.experience = [Hash.new]
+  c.experience[0]["company"] = "Acme Corp"
+  c.experience[0]["job"] = "Analista de Sistemas"
+  c.experience[0]["wage"] = 65000
+  c.experience[0]["from"] = Date.today - 500
+  c.experience[0]["to"] = Date.today - 50
+  c.save
   c
 end
-Training.create(description: "Certificado CCNA", level: "technical", from_at: Date.today, to_at: Date.today, institution: "ITLA", candidate: candidates.sample);
 u = User.create(email: "admin@admin.com", password: "123")

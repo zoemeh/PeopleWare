@@ -26,12 +26,67 @@ p#notice = notice
         strong = t("activerecord.attributes.candidate.recommended_by").capitalize
         | :
         = @candidate.recommended_by.nil? ? @candidate.recommended_by : "N/A"
-      form method="post" action=job_select_candidate_path(candidate_id: @candidate.id)
-        .mb-3
-          label.form-label Salario
-          input.form-control name="wage" type="number" step="0.01"
-        .mb-3
-          button.btn.btn-success type="submit" Seleccionar Candidato
+      p
+        strong Idiomas
+      ul
+        - @candidate.languages.each do |l|
+          li = l.name
+      p 
+        strong Competencias
+      ul
+        - @candidate.skills.each do |s|
+          li = s.description
+      strong Capacitaciones
+      - if @candidate.trainings.size > 0
+        table.table
+          thead
+            tr
+              th Descripcion
+              th Nivel
+              th Instituacion
+              th Desde
+              th Hasta
+          tbody
+            - @candidate.trainings.each do |t|
+              tr
+                td = t.description
+                td = t.level
+                td = t.institution
+                td = t.from_at
+                td = t.to_at
+      - else 
+        p N/A
+      strong Experiencia
+      - if @candidate.experience.any? {|x| !x["company"].empty?}
+        table.table
+          thead
+            tr
+              th Empresa
+              th Puesto
+              th Desde
+              th Hasta
+              th Salario
+          tbody
+            - @candidate.experience&.each do |e|
+              tr
+                td = e["company"]
+                td = e["job"]
+                td = e["from"]
+                td = e["to"]
+                td = e["wage"]
+      - else
+        p N/A  
+      - if !@candidate.employee.nil?
+        p 
+          strong Contratado en puesto:
+          = link_to @candidate.employee.job.name, @candidate.employee.job
+      - if not @candidate.job.has_employee?
+        form method="post" action=job_select_candidate_path(id: @candidate.job.id, candidate_id: @candidate.id)
+          .mb-3
+            label.form-label Salario
+            input.form-control name="wage" type="number" step="0.01"
+          .mb-3
+            button.btn.btn-success type="submit" Seleccionar Candidato
       .btn-group role="group"
         => link_to t('edit').titleize, edit_candidate_path(@candidate), class: "btn btn-primary"
         =< link_to t('back').titleize, candidates_path, class: "btn btn-secondary"

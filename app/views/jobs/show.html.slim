@@ -27,6 +27,10 @@ p#notice = notice
         strong = t("status").capitalize
         | :
         = @job.status
+      - if !@job.candidate.nil?
+        p 
+          strong Empleado: 
+          = link_to @job.candidate.name, @job.candidate
 
       .btn-group role="group"
         => link_to t('edit').titleize, edit_job_path(@job), class: "btn btn-primary"

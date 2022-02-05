@@ -15,4 +15,8 @@ class Job < ApplicationRecord
     employee = Employee.create(cedula: candidate.cedula, name: candidate.name, hired_date: Date.today, 
       job: self, wage: wage, status: true, candidate: candidate)
   end
+
+  def has_employee?
+    !self.candidate.nil?
+  end
 end

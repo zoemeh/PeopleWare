@@ -68,6 +68,7 @@ class CandidatesController < ApplicationController
       params.require(:candidate).permit(:cedula, :name, :job_id, :desired_wage, :recommended_by, 
         experience: [:company, :job, :to, :from, :wage], 
         trainings_attributes: [:id, :description, :level, :institution, :from_at, :to_at],
+        skill_ids: [],
         language_ids: [])
     end
 end

@@ -9,7 +9,8 @@
     input type="hidden" name="candidate[job_id]" value=@job.id
     = f.input :desired_wage
     = f.input :recommended_by
-    = f.association :languages, as: :check_boxes, legend_tag: "label"
+    = f.association :languages, as: :check_boxes, collection: Language.active.order(:name)
+    = f.association :skills, as: :check_boxes, label_method: :description, collection: Skill.active.order(:description)
   h3 = t("trainings").capitalize
   - (@candidate.trainings + [Training.new]).each do |t|
     .mb-3
@@ -32,9 +33,8 @@
         input.form-control type="date" name="candidate[trainings_attributes][][from_at]" value=t.from_at
         span.input-group-text = t('activerecord.attributes.training.to_at').capitalize
         input.form-control type="date" name="candidate[trainings_attributes][][to_at]" value=t.to_at
-        a.btn.btn-danger = t("destroy").capitalize
-  a.btn.btn-primary.mb-3 href="#" = t("new skill").titleize
-
+        a.btn.btn-danger.destroy_training_btn = t("destroy").capitalize
+  a.btn.btn-primary.mb-3 id="new_training_btn" Nueva Capacatiacion
   h3 = t('experience').capitalize
   - (1..3).each do
     .input-group.mb-3

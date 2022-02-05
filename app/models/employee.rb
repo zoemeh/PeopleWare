@@ -5,4 +5,5 @@ class Employee < ApplicationRecord
   validates :cedula, presence: true, uniqueness: true
   validates :hired_date, presence: true
   validates :wage, presence: true
+  validates :candidate_id, uniqueness: true
 end

@@ -6,3 +6,23 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+window.onload = (event) => {
+    var destroy_btns = document.getElementsByClassName("destroy_training_btn");
+        for (var i=0; i < destroy_btns.length; i++) {
+            destroy_btns[i].onclick = (event) => {
+                console.log(event.srcElement.parentElement.parentElement.remove())
+            } 
+    }
+    document.getElementById("new_training_btn").onclick = (event) => {
+        document.getElementById("new_training_btn").insertAdjacentHTML("beforebegin", "<div class='mb-3'><div class='input-group mb-3'><input class='form-control' name='candidate[trainings_attributes][][id]' type='hidden'><span class='input-group-text'>Descripción</span><input class='form-control' name='candidate[trainings_attributes][][description]' type='text'><span class='input-group-text'>Nivel</span><select class='form-select form-control' name='candidate[trainings_attributes][][level]'><option>grado </option><option>post-grado</option><option>maestria </option><option>doctorado </option><option>tecnico </option><option>gestion</option></select></div><div class='input-group mb-3'><span class='input-group-text'>Institución</span><input class='form-control' name='candidate[trainings_attributes][][institution]' type='text'><span class='input-group-text'>Fecha desde</span><input class='form-control' name='candidate[trainings_attributes][][from_at]' type='date'><span class='input-group-text'>Fecha hasta</span><input class='form-control' name='candidate[trainings_attributes][][to_at]' type='date'><a class='btn btn-danger destroy_training_btn'>Eliminar</a></div></div>")
+        var destroy_btns = document.getElementsByClassName("destroy_training_btn");
+        for (var i=0; i < destroy_btns.length; i++) {
+            destroy_btns[i].onclick = (event) => {
+                console.log(event.srcElement.parentElement.parentElement.remove())
+            } 
+        }
+    }
+    
+};
+
+  

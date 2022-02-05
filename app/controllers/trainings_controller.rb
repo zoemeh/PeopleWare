@@ -50,10 +50,11 @@ class TrainingsController < ApplicationController
 
   # DELETE /trainings/1 or /trainings/1.json
   def destroy
+    candidate = @training.candidate
     @training.destroy
 
     respond_to do |format|
-      format.html { redirect_to trainings_url, notice: "Training was successfully destroyed." }
+      format.html { redirect_to candidate, notice: "Training was successfully destroyed." }
       format.json { head :no_content }
     end
   end

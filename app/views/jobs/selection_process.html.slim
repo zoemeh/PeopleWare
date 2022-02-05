@@ -24,4 +24,3 @@
                             tr 
                                 td = candidate.name
                                 td = link_to t("show").capitalize, candidate, class: "btn btn-primary"
-                                td = link_to "Seleccionar", job_select_candidate_path(id: @job.id, candidate_id: candidate.id), class: "btn btn-success #{@job.candidate.nil? ? '' : 'disabled'}"

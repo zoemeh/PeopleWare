@@ -9,7 +9,7 @@ class Candidate < ApplicationRecord
   }
 
   validates :name, presence: true
-  validates :cedula, presence: true
+  validates :cedula, presence: true, uniqueness: true
   validates :desired_wage, presence: true, numericality: true
 
   def has_language?(lang)

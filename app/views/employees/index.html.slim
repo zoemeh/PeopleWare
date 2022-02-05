@@ -4,11 +4,11 @@ table.table
   thead
     tr
       th Cedula
-      th Name
-      th Hired date
-      th Job
-      th Wage
-      th Status
+      th Nombre
+      th Contratado en
+      th Puesto
+      th Salario
+      th Estado
       th
       th
       th
@@ -19,13 +19,15 @@ table.table
         td = employee.cedula
         td = employee.name
         td = employee.hired_date
-        td = employee.job
+        td = link_to employee.job.name, employee.job
         td = employee.wage
-        td = employee.status
-        td = link_to 'Show', employee
-        td = link_to 'Edit', edit_employee_path(employee)
-        td = link_to 'Destroy', employee, data: { confirm: 'Are you sure?' }, method: :delete
+        td = (employee.status ? "Activo" : "Inactivo")
+        td 
+          .btn-group
+            = link_to t('show').capitalize, employee, class: "btn btn-primary"
+            = link_to t('edit').capitalize, edit_employee_path(employee), class: "btn btn-success"
+            = link_to t('destroy').capitalize, employee, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
 
 br
 
-= link_to 'New Employee', new_employee_path
+= link_to "Nuevo Empleado", new_employee_path, class: "btn btn-primary"

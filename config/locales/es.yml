@@ -49,6 +49,8 @@ es:
         job: puesto
         desired_wage: salario deseado
         recommended_by: recomendado por
+        skills: competencias
+        languages: idiomas
   back: atras
   show: mostrar
   edit: editar

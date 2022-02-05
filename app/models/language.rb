@@ -1,4 +1,6 @@
 class Language < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
-  validates :status, presence: true
+  def self.active
+    Language.where(status: true)
+  end
 end
