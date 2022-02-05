@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 2022_02_03_122730) do
     t.index ["skill_id"], name: "index_candidates_skills_on_skill_id"
   end
 
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "cedula"
     t.string "name"
@@ -54,15 +60,16 @@ ActiveRecord::Schema.define(version: 2022_02_03_122730) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "name"
-    t.string "department"
     t.string "risk_level"
     t.float "wage_min"
     t.float "wage_max"
     t.boolean "status"
     t.integer "candidate_id"
+    t.integer "department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["candidate_id"], name: "index_jobs_on_candidate_id"
+    t.index ["department_id"], name: "index_jobs_on_department_id"
   end
 
   create_table "languages", force: :cascade do |t|

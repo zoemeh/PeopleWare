@@ -90,6 +90,6 @@ class JobsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(:name, :risk_level, :wage_min, :wage_max, :status, :department)
+      params.require(:job).permit(:name, :risk_level, :wage_min, :wage_max, :status, :department_id)
     end
 end

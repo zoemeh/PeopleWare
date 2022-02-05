@@ -1,0 +1,8 @@
+.card 
+    .card-body 
+        h1.card-title Editando Departamento
+        .card-text
+            == render 'form'
+            .btn-group
+                => link_to t('show').titleize, @department, class: 'btn btn-primary'
+                =< link_to t('back').titleize, departments_path, class: 'btn btn-secondary'

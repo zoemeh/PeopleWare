@@ -20,6 +20,9 @@ es:
       candidate:
         one: candidato
         other: candidatos
+      department:
+        one: departamento
+        other: departamentos
     attributes:
       skill:
         id: código
@@ -44,6 +47,7 @@ es:
         department: departamento
         status: estado
       candidate:
+        id: código
         cedula: cedula
         name: nombre
         job: puesto
@@ -51,6 +55,9 @@ es:
         recommended_by: recomendado por
         skills: competencias
         languages: idiomas
+      department:
+        id: código
+        name: nombre
   back: atras
   show: mostrar
   edit: editar

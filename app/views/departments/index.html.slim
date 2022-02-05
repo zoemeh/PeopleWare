@@ -1,0 +1,21 @@
+h1 Departamentos
+
+table.table
+  thead
+    tr
+      th Nombre
+      th
+
+  tbody
+    - @departments.each do |department|
+      tr
+        td = department.name
+        td 
+          .btn-group
+            = link_to t('show').capitalize, department, class: "btn btn-primary"
+            = link_to t('edit').capitalize, edit_department_path(department), class: "btn btn-success"
+            = link_to t('destroy').capitalize, department, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
+
+br
+
+= link_to "Nuevo Departamento", new_department_path, class: "btn btn-primary"

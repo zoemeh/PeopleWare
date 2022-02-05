@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :departments
   get 'reports/index'
   get 'reports/new_employees'
   get 'reports/candidates'

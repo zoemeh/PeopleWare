@@ -8,6 +8,11 @@ p#notice = notice
         | :
         = @job.name
 
+      p 
+        strong Departamento
+        | :
+        = link_to @job.department.name, @job.department
+
       p
         strong = t("activerecord.attributes.job.risk_level").capitalize
         | :

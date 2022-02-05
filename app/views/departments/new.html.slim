@@ -1,0 +1,6 @@
+.card 
+    .card-body 
+        h1.card-title Nuevo Departamento
+        .card-text
+            == render 'form'
+            = link_to t('back').titleize, departments_path, class: "btn btn-secondary"

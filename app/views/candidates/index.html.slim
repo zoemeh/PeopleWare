@@ -18,14 +18,13 @@ table.table
         td = candidate.name
         td = link_to candidate.job.name, candidate.job
         td = candidate.desired_wage
-        td = candidate.job.department
+        td = candidate.job.department.name
         td = candidate.recommended_by
         td 
           .btn-group
             = link_to t('show').capitalize, candidate, class: "btn btn-primary"
             = link_to t('edit').capitalize, edit_candidate_path(candidate), class: "btn btn-success"
             = link_to t('destroy').capitalize, candidate, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
-
 br
 
 = link_to t('new candidate').titleize, new_candidate_path, class: "btn btn-primary"

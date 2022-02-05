@@ -14,11 +14,13 @@ skills = ["Manejor de Recursos Humanos", "Uso de Herramientas Ofimaticas",
   "Gestion de Presupusto", "Hablar en publico"].map do |x|
   Skill.create(description: x, status: true).id
 end
+departments = []
+departments.push Department.create(name: "Tecnologia")
 jobs = []
-jobs.push Job.create(name: "Programador", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
-jobs.push Job.create(name: "Contador", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
-jobs.push Job.create(name: "Diseñador gráfico", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
-jobs.push Job.create(name: "Arquitecto", department: "Tech", risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
+jobs.push Job.create(name: "Programador", department_id: departments[0].id, risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
+jobs.push Job.create(name: "Contador", department_id:  departments[0].id, risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
+jobs.push Job.create(name: "Diseñador gráfico", department_id:  departments[0].id, risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
+jobs.push Job.create(name: "Arquitecto", department_id:  departments[0].id, risk_level: "low", wage_min: 1, wage_max: 10, status: "active")
 
 wages = (1..10).map do |x| x*5000.0 end
 i = 0

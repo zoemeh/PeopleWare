@@ -15,7 +15,11 @@ p#notice = notice
       p
         strong = t("activerecord.attributes.candidate.job").capitalize
         | :
-        = @candidate.job.name
+        = link_to @candidate.job.name, @candidate.job
+      p
+        strong Departamento 
+        | :
+        = link_to @candidate.job.department.name, @candidate.job.department
 
       p
         strong = t("activerecord.attributes.candidate.desired_wage").capitalize
