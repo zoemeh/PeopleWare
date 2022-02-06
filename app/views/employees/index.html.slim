@@ -1,4 +1,4 @@
-h1 Listing employees
+h1 Empleados
 
 table.table
   thead
@@ -6,6 +6,7 @@ table.table
       th Cedula
       th Nombre
       th Contratado en
+      th Departamento
       th Puesto
       th Salario
       th Estado
@@ -19,6 +20,7 @@ table.table
         td = employee.cedula
         td = employee.name
         td = employee.hired_date
+        td = link_to employee.job.department.name, employee.job.department
         td = link_to employee.job.name, employee.job
         td = employee.wage
         td = (employee.status ? "Activo" : "Inactivo")
@@ -27,7 +29,3 @@ table.table
             = link_to t('show').capitalize, employee, class: "btn btn-primary"
             = link_to t('edit').capitalize, edit_employee_path(employee), class: "btn btn-success"
             = link_to t('destroy').capitalize, employee, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
-
-br
-
-= link_to "Nuevo Empleado", new_employee_path, class: "btn btn-primary"

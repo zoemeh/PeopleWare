@@ -31,7 +31,7 @@ p#notice = notice
       p
         strong = t("status").capitalize
         | :
-        = @job.status
+        = @job.status ? "Activo" : "Inactivo"
       - if !@job.candidate.nil?
         p 
           strong Empleado: 

@@ -14,12 +14,11 @@
     <div class="container">
       <div class="row">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-          <ul class="nav col-10 mb-2 justify-content-center mb-md-0">
+          <ul class="nav col-9 mb-2 justify-content-center mb-md-0">
             <li><a href="<%= root_path %>" class="nav-link px-2 link-secondary"><%= t('home').capitalize %></a></li>
             <% if signed_in? %>
               <li><a href="<%= skills_path %>" class="nav-link px-2 link-dark">Competencias</a></li>
               <li><a href="<%= languages_path %>" class="nav-link px-2 link-dark">Idiomas</a></li>
-              <li><a href="<%= trainings_path %>" class="nav-link px-2 link-dark">Capacitaciones</a></li>
               <li><a href="<%= departments_path %>" class="nav-link px-2 link-dark">Departamentos</a></li>
               <li><a href="<%= jobs_path %>" class="nav-link px-2 link-dark">Puestos</a></li>
               <li><a href="<%= candidates_path %>" class="nav-link px-2 link-dark">Candidatos</a></li>
@@ -27,13 +26,14 @@
               <li><a href="<%= reports_index_path %>" class="nav-link px-2 link-dark">Reportes</a></li>
             <% end %>
           </ul>
-          <div class="col-2 text-end">
+          <ul class="col-3 nav justify-content-center mb-md-0">
             <% if signed_in? %>
-              <%= button_to t("logout").capitalize, sign_out_path, method: :delete, class: "btn btn-primary" %>
+              <li class="nav-link link-dark"><%= current_user.email%> </li>
+              <li> <%= button_to t("logout").capitalize, sign_out_path, method: :delete, class: "btn btn-primary" %></li>
             <% else %>
               <a href="<%=sign_in_path %>" class="btn btn-outline-primary me-2"><%= t('login').capitalize %></a>
             <% end %>
-          </div>
+          </ul>
         </header>
       </div>
       <div class="row">

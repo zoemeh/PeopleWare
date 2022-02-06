@@ -1,9 +1,11 @@
 p#notice = notice
-
-p
-  strong Name:
-  = @department.name
-
-=> link_to 'Edit', edit_department_path(@department)
-'|
-=< link_to 'Back', departments_path
+.card
+  .card-body 
+    h5.card-title = "Departamento #{@department.name}"
+    .card-text
+      p
+        strong Nombre:
+        = @department.name
+      .btn-group role="group"
+        => link_to t('edit').titleize, edit_department_path(@department), class: "btn btn-primary"
+        =< link_to t('back').titleize, departments_path, class: "btn btn-secondary"

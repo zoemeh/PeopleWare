@@ -9,7 +9,7 @@ p#notice = notice
 
       p
         strong = "#{t('status').titleize}:"
-        = t(@skill.status)
+        = @skill.status ? "Activo" : "Inactivo"
 
       .btn-group role="group"
         => link_to t('edit').titleize, edit_skill_path(@skill), class: "btn btn-primary"

@@ -1,29 +1,34 @@
 p#notice = notice
+.card
+  .card-body 
+    h5.card-title = "Empleado #{@employee.name}"
+    .card-text
+      p
+        strong Cedula:
+        = @employee.cedula
 
-p
-  strong Cedula:
-  = @employee.cedula
+      p
+        strong Nombre:
+        = @employee.name
 
-p
-  strong Name:
-  = @employee.name
+      p
+        strong Contratado en:
+        = @employee.hired_date
 
-p
-  strong Hired date:
-  = @employee.hired_date
+      p
+        strong Departamento
+        = link_to @employee.job.department.name, @employee.job.department
+      p
+        strong Puesto:
+        = link_to @employee.job.name, @employee.job
+      
+      p
+        strong Salario:
+        = @employee.wage
 
-p
-  strong Job:
-  = @employee.job
-
-p
-  strong Wage:
-  = @employee.wage
-
-p
-  strong Status:
-  = @employee.status
-
-=> link_to 'Edit', edit_employee_path(@employee)
-'|
-=< link_to 'Back', employees_path
+      p
+        strong Status:
+        = @employee.status ? "Activo" : "Inactivo"
+      .btn-group role="group"
+        => link_to t('edit').titleize, edit_employee_path(@employee), class: "btn btn-primary"
+        =< link_to t('back').titleize, employees_path, class: "btn btn-secondary"
