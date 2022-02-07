@@ -23,6 +23,9 @@ es:
       department:
         one: departamento
         other: departamentos
+      employee:
+        one: empleado
+        other: empleados
     attributes:
       skill:
         id: código
@@ -37,7 +40,7 @@ es:
         description: descripción
         level: nivel
         from_at: fecha desde
-        to_at: fecha hasta
+        to_at: fecha hasta 
         institution: institución
       job:
         wage_max: salario máximo
@@ -58,6 +61,10 @@ es:
       department:
         id: código
         name: nombre
+      employee:
+        id: código
+        wage: salario
+        hired_date: fecha de ingreso
   back: atras
   show: mostrar
   edit: editar
