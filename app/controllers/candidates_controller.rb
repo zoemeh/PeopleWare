@@ -9,6 +9,11 @@ class CandidatesController < ApplicationController
 
   # GET /candidates/1 or /candidates/1.json
   def show
+    if (@candidate.employee.nil?)
+      @employee = Employee.new
+    else
+      @employee = @candidate.employee
+    end
   end
 
   # GET /candidates/new

@@ -85,12 +85,14 @@ p#notice = notice
           strong Contratado en puesto:
           = link_to @candidate.employee.job.name, @candidate.employee.job
       - if not @candidate.job.has_employee?
-        form method="post" action=job_select_candidate_path(id: @candidate.job.id, candidate_id: @candidate.id)
-          .mb-3
-            label.form-label Salario
-            input.form-control name="wage" type="number" step="0.01"
-          .mb-3
-            button.btn.btn-success type="submit" Seleccionar Candidato
+        = simple_form_for(@employee, url: job_select_candidate_path(id: @candidate.job.id, candidate_id: @candidate.id)) do |f|
+          = f.error_notification
+          = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+          .form-inputs.mb-3
+            = f.input :wage
+            = f.input :hired_date, as: :date, html5: true
+          .form-actions.mb-3
+            = f.button :submit, "Seleccionar Candidato", class: 'btn btn-success'
       .btn-group role="group"
         => link_to t('edit').titleize, edit_candidate_path(@candidate), class: "btn btn-primary"
         =< link_to t('back').titleize, candidates_path, class: "btn btn-secondary"

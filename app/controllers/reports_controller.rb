@@ -7,4 +7,5 @@ class ReportsController < ApplicationController
 
   def candidates
   end
+  
 end

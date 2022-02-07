@@ -9,12 +9,15 @@ class Job < ApplicationRecord
   belongs_to :candidate, optional: true
   belongs_to :department
 
-  def select_candidate(candidate, wage)
-    self.candidate = candidate
-    self.status = false
-    self.save
-    employee = Employee.create(cedula: candidate.cedula, name: candidate.name, hired_date: Date.today, 
+  def select_candidate(candidate, wage, hired_date)
+    employee = Employee.create(cedula: candidate.cedula, name: candidate.name, hired_date: hired_date,
       job: self, wage: wage, status: true, candidate: candidate)
+    if !employee.id.nil?
+      self.candidate = candidate
+      self.status = false
+      self.save
+    end
+    employee
   end
 
   def has_employee?

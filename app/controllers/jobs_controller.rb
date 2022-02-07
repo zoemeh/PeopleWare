@@ -31,8 +31,12 @@ class JobsController < ApplicationController
 
   def select_candidate
     @candidate = Candidate.find(params[:candidate_id])
-    @job.select_candidate(@candidate, params[:wage])
-    redirect_to @job
+    @employee = @job.select_candidate(@candidate, params[:employee][:wage], params[:employee][:hired_date])
+    if @employee.id.nil?
+      render "candidates/show", status: :unprocessable_entity
+    else
+      redirect_to @job
+    end
   end
 
   # GET /jobs/new
