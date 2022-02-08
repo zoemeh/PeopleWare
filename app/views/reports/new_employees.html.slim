@@ -1,2 +1,9 @@
-h1 Reports#new_employees
-p Find me in app/views/reports/new_employees.html.slim
+h1 Reporte nuevos ingresos 
+
+form action=reports_new_employees_path(format: :xlsx) method="POST"
+    .mb-3
+        label.form-label Desde
+        input.form-control type="date" name="start"
+        label.form-label Hasta
+        input.form-control type="date" name="end"
+    button.btn.btn-primary type="submit" Generar

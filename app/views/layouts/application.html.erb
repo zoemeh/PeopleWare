@@ -13,28 +13,38 @@
   <body>
     <div class="container">
       <div class="row">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-          <ul class="nav col-9 mb-2 justify-content-center mb-md-0">
-            <li><a href="<%= root_path %>" class="nav-link px-2 link-secondary"><%= t('home').capitalize %></a></li>
-            <% if signed_in? %>
-              <li><a href="<%= skills_path %>" class="nav-link px-2 link-dark">Competencias</a></li>
-              <li><a href="<%= languages_path %>" class="nav-link px-2 link-dark">Idiomas</a></li>
-              <li><a href="<%= departments_path %>" class="nav-link px-2 link-dark">Departamentos</a></li>
-              <li><a href="<%= jobs_path %>" class="nav-link px-2 link-dark">Puestos</a></li>
-              <li><a href="<%= candidates_path %>" class="nav-link px-2 link-dark">Candidatos</a></li>
-              <li><a href="<%= employees_path %>" class="nav-link px-2 link-dark">Empleados</a></li>
-              <li><a href="<%= reports_index_path %>" class="nav-link px-2 link-dark">Reportes</a></li>
-            <% end %>
-          </ul>
-          <ul class="col-3 nav justify-content-center mb-md-0">
-            <% if signed_in? %>
-              <li class="nav-link link-dark"><%= current_user.email%> </li>
-              <li> <%= button_to t("logout").capitalize, sign_out_path, method: :delete, class: "btn btn-primary" %></li>
-            <% else %>
-              <a href="<%=sign_in_path %>" class="btn btn-outline-primary me-2"><%= t('login').capitalize %></a>
-            <% end %>
-          </ul>
-        </header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">PersonaWare</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link <%= (current_page?(root_path) ? 'active' : '')%>"  href="/">Inicio</a>
+                </li>
+                <% if signed_in? %>
+                  <li><a href="<%= skills_path %>" class="nav-link <%= (current_page?(skills_path) ? 'active' : '')%>">Competencias</a></li>
+                  <li><a href="<%= languages_path %>" class="nav-link <%= (current_page?(languages_path) ? 'active' : '') %>">Idiomas</a></li>
+                  <li><a href="<%= departments_path %>" class="nav-link <%= (current_page?(departments_path) ? 'active' : '') %>">Departamentos</a></li>
+                  <li><a href="<%= jobs_path %>" class="nav-link <%= (current_page?(jobs_path) ? 'active' : '') %>">Puestos</a></li>
+                  <li><a href="<%= candidates_path %>" class="nav-link <%= (current_page?(candidates_path) ? 'active' : '') %>">Candidatos</a></li>
+                  <li><a href="<%= employees_path %>" class="nav-link <%= (current_page?(employees_path) ? 'active' : '') %>">Empleados</a></li>
+                  <li><a href="<%= reports_index_path %>" class="nav-link <%= (current_page?(reports_index_path) ? 'active' : '') %>">Reportes</a></li>
+                <% end %>
+              </ul>
+              <div class="d-flex">
+               <% if signed_in? %>
+                  <span class="me-2 py-1"><%= current_user.email%></span>
+                  <%= button_to t("logout").capitalize, sign_out_path, method: :delete, class: "btn btn-primary btn-sm d-flex" %>
+                <% else %>
+                  <a href="<%=sign_in_path %>" class="btn btn-outline-primary btn-sm"><%= t('login').capitalize %></a>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </nav>
       </div>
       <div class="row">
         <%= yield %>

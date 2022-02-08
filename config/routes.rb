@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :departments
   get 'reports/index'
   get 'reports/new_employees'
+  post 'reports/new_employees', to: "reports#generate_new_employees"
   get 'reports/candidates'
+  post 'reports/candidates', to: "reports#candidates_search"
   resources :employees
   resources :candidates
   get 'backoffice/index'

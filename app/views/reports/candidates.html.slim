@@ -1,2 +1,15 @@
-h1 Reports#candidates
-p Find me in app/views/reports/candidates.html.slim
+h1 Consulta de candidatos por criterios 
+
+form method="POST"
+    .mb-3
+        label.form-label Departamento
+        input.form-control name="department"
+        label.form-label Puesto
+        input.form-control name="job"
+        label.form-label Capacitaciones
+        input.form-control name="trainings"
+        label.form-label Competencias
+        input.form-control name="skills"
+        label.form-label Salario deseado
+        input.form-control name="desired_wage"
+    button.btn.btn-primary type="submit" Buscar

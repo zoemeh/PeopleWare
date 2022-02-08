@@ -14,7 +14,7 @@ table.table
           .btn-group
             = link_to t('show').capitalize, department, class: "btn btn-primary"
             = link_to t('edit').capitalize, edit_department_path(department), class: "btn btn-success"
-            = link_to t('destroy').capitalize, department, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
+            = button_to t('destroy').capitalize, department, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
 
 br
 

@@ -27,6 +27,56 @@ p#notice = notice
         = @employee.wage
 
       p
+        strong Idiomas
+      ul
+        - @employee.candidate.languages.each do |l|
+          li = l.name
+      p 
+        strong Competencias
+      ul
+        - @employee.candidate.skills.each do |s|
+          li = s.description
+      strong Capacitaciones
+      - if @employee.candidate.trainings.size > 0
+        table.table
+          thead
+            tr
+              th Descripcion
+              th Nivel
+              th Instituacion
+              th Desde
+              th Hasta
+          tbody
+            - @employee.candidate.trainings.each do |t|
+              tr
+                td = t.description
+                td = t.level
+                td = t.institution
+                td = t.from_at
+                td = t.to_at
+      - else 
+        p N/A
+      strong Experiencia
+      - if @employee.candidate.experience.any? {|x| !x["company"].empty?}
+        table.table
+          thead
+            tr
+              th Empresa
+              th Puesto
+              th Desde
+              th Hasta
+              th Salario
+          tbody
+            - @employee.candidate.experience&.each do |e|
+              tr
+                td = e["company"]
+                td = e["job"]
+                td = e["from"]
+                td = e["to"]
+                td = e["wage"]
+      - else
+        p N/A  
+      p
         strong Status:
         = @employee.status ? "Activo" : "Inactivo"
       .btn-group role="group"

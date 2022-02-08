@@ -59,6 +59,7 @@ gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
 gem "clearance"
 gem 'caxlsx'
 gem 'caxlsx_rails'
+gem 'search_cop'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

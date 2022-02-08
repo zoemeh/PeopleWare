@@ -44,7 +44,7 @@
       input.form-control type="date" placeholder="Desde" name="candidate[experience][][from]"
       span.input-group-text Hasta
       input.form-control type="date" placeholder="Hasta" name="candidate[experience][][to]"
-      input.form-control type="text" placeholder="Salario" name="candidate[experience][][wage]"
+      input.form-control type="number" step="0.01" placeholder="Salario" name="candidate[experience][][wage]"
 
   .form-actions
     = f.button :submit, "Aplicar", class: 'btn btn-success'

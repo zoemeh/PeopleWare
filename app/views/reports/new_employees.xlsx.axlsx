@@ -1,0 +1,15 @@
+wb = xlsx_package.workbook
+s = wb.styles
+black_cell = s.add_style bg_color: '00', fg_color: 'FF', sz: 14, alignment: { horizontal: :center }
+data_cell = s.add_style sz: 14, alignment: { horizontal: :center, outline: true }
+total_cell = s.add_style fg_color: "0000FF", sz: 14, alignment: { horizontal: :center, b: true }
+header_cell = s.add_style sz: 16, alignment: { horizontal: :center, outline: true }
+wb.add_worksheet(name: "Nuevo Ingreso") do |sheet|
+  sheet.add_row ["Empleados de nuevo ingreso", "De:", @start.to_s, "Hasta:", @end.to_s], style: header_cell
+  sheet.add_row []
+  sheet.add_row ["Cedula", "Nombre", "Contratado en", "Departamento", "Puesto", "Salario"], style: black_cell
+  @employees.each do |e|
+    sheet.add_row [e.cedula, e.name, e.hired_date.to_s, e.job.department.name, e.job.name, e.wage], style: data_cell
+  end
+  sheet.add_row ["Total:", @employees.length],style: [black_cell, total_cell]
+end

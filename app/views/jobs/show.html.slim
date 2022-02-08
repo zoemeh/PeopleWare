@@ -35,7 +35,7 @@ p#notice = notice
       - if !@job.candidate.nil?
         p 
           strong Empleado: 
-          = link_to @job.candidate.name, @job.candidate
+          = link_to @job.candidate.employee.name, @job.candidate.employee
 
       .btn-group role="group"
         => link_to t('edit').titleize, edit_job_path(@job), class: "btn btn-primary"

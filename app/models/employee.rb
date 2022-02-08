@@ -1,6 +1,6 @@
 class Employee < ApplicationRecord
   belongs_to :job
-  belongs_to :candidate
+  belongs_to :candidate, dependent: :destroy
   validates :name, presence: true
   validates :cedula, presence: true, uniqueness: true
   validates :hired_date, presence: true
