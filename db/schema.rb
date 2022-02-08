@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(version: 2022_02_03_122730) do
     t.float "desired_wage"
     t.string "recommended_by"
     t.json "experience"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["job_id"], name: "index_candidates_on_job_id"
+    t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
   create_table "candidates_languages", id: false, force: :cascade do |t|
@@ -106,11 +108,13 @@ ActiveRecord::Schema.define(version: 2022_02_03_122730) do
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
+    t.string "group", null: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
   add_foreign_key "candidates", "jobs"
+  add_foreign_key "candidates", "users"
   add_foreign_key "employees", "candidates"
   add_foreign_key "employees", "jobs"
   add_foreign_key "trainings", "candidates"

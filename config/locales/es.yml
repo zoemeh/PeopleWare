@@ -65,6 +65,9 @@ es:
         id: código
         wage: salario
         hired_date: fecha de ingreso
+        status: estado
+        job: puesto
+        name: nombre
   back: atras
   show: mostrar
   edit: editar

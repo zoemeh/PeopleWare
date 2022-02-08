@@ -1,5 +1,6 @@
-h1 New employee
-
-== render 'form'
-
-= link_to 'Back', employees_path
+.card 
+    .card-body 
+        h1.card-title Nuevo Empleado
+        .card-text
+            == render 'form'
+            = link_to t('back').titleize, employees_path, class: "btn btn-secondary"

@@ -39,4 +39,4 @@ candidates = (1..20).map do
   c.save
   c
 end
-u = User.create(email: "admin@admin.com", password: "123")
+u = User.create(email: "admin@admin.com", password: "123", group: "admins")

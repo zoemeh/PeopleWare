@@ -7,6 +7,7 @@ class CreateCandidates < ActiveRecord::Migration[7.0]
       t.float :desired_wage
       t.string :recommended_by
       t.json :experience
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
