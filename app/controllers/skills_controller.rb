@@ -5,6 +5,7 @@ class SkillsController < ApplicationController
   # GET /skills or /skills.json
   def index
     @skills = Skill.all
+    authorize @skills
   end
 
   # GET /skills/1 or /skills/1.json
