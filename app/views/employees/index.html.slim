@@ -12,7 +12,6 @@ table.table
       th Estado
       th
       th
-      th
 
   tbody
     - @employees.each do |employee|
@@ -28,4 +27,5 @@ table.table
           .btn-group
             = link_to t('show').capitalize, employee, class: "btn btn-primary"
             = link_to t('edit').capitalize, edit_employee_path(employee), class: "btn btn-success"
-            = link_to t('destroy').capitalize, employee, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
+        td
+          = button_to t('destroy').capitalize, employee, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"

@@ -1,5 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: %i[ show edit update destroy ]
+  before_action :require_login
 
   # GET /departments or /departments.json
   def index

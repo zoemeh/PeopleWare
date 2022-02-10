@@ -1,5 +1,11 @@
 h1 = t("listing candidates").titleize
-
+form.row.mb-2
+  .col-9
+    input.form-control placeholder="Buscar" name="buscar"  value=@buscar
+  .col-1
+    button.btn.btn-secondary type="submit" Buscar
+  .col-2
+    a.btn.btn-primary Busqueda Avanzada
 table.table
   thead
     tr
@@ -9,6 +15,7 @@ table.table
       th = t("activerecord.attributes.candidate.desired_wage").capitalize
       th Departamento
       th = t("activerecord.attributes.candidate.recommended_by").capitalize
+      th
       th
 
   tbody
@@ -24,7 +31,8 @@ table.table
           .btn-group
             = link_to t('show').capitalize, candidate, class: "btn btn-primary"
             = link_to t('edit').capitalize, edit_candidate_path(candidate), class: "btn btn-success"
-            = link_to t('destroy').capitalize, candidate, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
+        td
+          = button_to t('destroy').capitalize, candidate, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
 br
 
 = link_to t('new candidate').titleize, new_candidate_path, class: "btn btn-primary"

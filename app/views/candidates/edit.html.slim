@@ -3,6 +3,3 @@
         h1.card-title = t('editing candidate').titleize
         .card-text
             == render 'form'
-            .btn-group
-                => link_to t('show').titleize, @candidate, class: 'btn btn-primary'
-                =< link_to t('back').titleize, candidates_path, class: 'btn btn-secondary'

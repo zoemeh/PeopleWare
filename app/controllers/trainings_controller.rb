@@ -23,10 +23,17 @@ class TrainingsController < ApplicationController
   # POST /trainings or /trainings.json
   def create
     @training = Training.new(training_params)
-
+    @candidate = Candidate.where(user_id: current_user.id).find(1)
+    @training.candidate = @candidate
     respond_to do |format|
       if @training.save
-        format.html { redirect_to training_url(@training), notice: "Training was successfully created." }
+        format.html { 
+          if current_user.group == "admins"
+            redirect_to trainings_url, notice: "Training was successfully created." 
+          else
+            redirect_to profile_trainings_url, notice: "Training was successfully created." 
+          end
+          }
         format.json { render :show, status: :created, location: @training }
       else
         format.html { render :new, status: :unprocessable_entity }

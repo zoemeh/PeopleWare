@@ -24,7 +24,7 @@
                 <li class="nav-item">
                   <a class="nav-link <%= (current_page?(root_path) ? 'active' : '')%>"  href="/">Inicio</a>
                 </li>
-                <% if signed_in? %>
+                <% if signed_in? && current_user.group == "admins" %>
                   <li><a href="<%= skills_path %>" class="nav-link <%= (current_page?(skills_path) ? 'active' : '')%>">Competencias</a></li>
                   <li><a href="<%= languages_path %>" class="nav-link <%= (current_page?(languages_path) ? 'active' : '') %>">Idiomas</a></li>
                   <li><a href="<%= departments_path %>" class="nav-link <%= (current_page?(departments_path) ? 'active' : '') %>">Departamentos</a></li>
@@ -32,11 +32,20 @@
                   <li><a href="<%= candidates_path %>" class="nav-link <%= (current_page?(candidates_path) ? 'active' : '') %>">Candidatos</a></li>
                   <li><a href="<%= employees_path %>" class="nav-link <%= (current_page?(employees_path) ? 'active' : '') %>">Empleados</a></li>
                   <li><a href="<%= reports_index_path %>" class="nav-link <%= (current_page?(reports_index_path) ? 'active' : '') %>">Reportes</a></li>
+                <% elsif signed_in? %>
+                  <li><a href="<%= profile_index_path %>" class="nav-link <%= (current_page?(profile_index_path) ? 'active' : '')%>">Perfil</a></li>
+                  <li><a href="<%= profile_job_path %>" class="nav-link <%= (current_page?(profile_job_path) ? 'active' : '')%>">Puesto</a></li>
+                  <li><a href="<%= profile_trainings_path %>" class="nav-link <%= (current_page?(profile_trainings_path) ? 'active' : '')%>">Capacitaciones</a></li>
+                  <li><a href="<%= profile_experience_path %>" class="nav-link <%= (current_page?(profile_experience_path) ? 'active' : '')%>">Experiencia</a></li>
                 <% end %>
               </ul>
               <div class="d-flex">
                <% if signed_in? %>
-                  <span class="me-2 py-1"><%= current_user.email%></span>
+                  <% if current_user.group == "admins"%>
+                    <span class="me-2 py-1"><%= current_user.email%></span>
+                  <% else %>
+                    <span class="me-2 py-1"><%= Candidate.where(user_id: current_user.id).first&.name %></span>
+                  <% end %>
                   <%= button_to t("logout").capitalize, sign_out_path, method: :delete, class: "btn btn-primary btn-sm d-flex" %>
                 <% else %>
                   <a href="<%=sign_in_path %>" class="btn btn-outline-primary btn-sm"><%= t('login').capitalize %></a>

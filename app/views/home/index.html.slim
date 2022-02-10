@@ -5,5 +5,4 @@
             .card 
                 .card-body 
                     h5.card-title = job.name 
-                    p.card-text Descripcion del trabajo 
-                    a.btn.btn-primary href=apply_job_path(job) = t("apply").capitalize
+                    a.btn.btn-primary href=apply_job_path(job) class=( current_user&.group == "candidates" ? "disabled" : nil) = t("apply").capitalize 

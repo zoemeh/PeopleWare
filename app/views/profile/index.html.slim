@@ -1,0 +1,88 @@
+p#notice = notice
+.card
+  .card-body 
+    .row
+        h5.card-title.col-11 = "#{t('activerecord.models.candidate.one').titleize}: #{@candidate.name}"
+        = link_to t('edit').capitalize, edit_candidate_path(@candidate), class: "btn btn-success col-auto"
+    .card-text
+      p
+        strong Cedula:
+        = @candidate.cedula
+
+      p
+        strong = t("activerecord.attributes.candidate.name").capitalize
+        | :
+        = @candidate.name
+
+      p
+        strong = t("activerecord.attributes.candidate.job").capitalize
+        | :
+        = @candidate.job.name
+      p
+        strong Departamento 
+        | :
+        = @candidate.job.department.name
+
+      p
+        strong = t("activerecord.attributes.candidate.desired_wage").capitalize
+        | :
+        = @candidate.desired_wage
+
+      p
+        strong = t("activerecord.attributes.candidate.recommended_by").capitalize
+        | :
+        = @candidate.recommended_by.nil? ? @candidate.recommended_by : "N/A"
+      p
+        strong Idiomas
+      ul
+        - @candidate.languages.each do |l|
+          li = l.name
+      p 
+        strong Competencias
+      ul
+        - @candidate.skills.each do |s|
+          li = s.description
+      strong Capacitaciones
+      - if @candidate.trainings.size > 0
+        table.table
+          thead
+            tr
+              th Descripcion
+              th Nivel
+              th Instituacion
+              th Desde
+              th Hasta
+          tbody
+            - @candidate.trainings.each do |t|
+              tr
+                td = t.description
+                td = t.level
+                td = t.institution
+                td = t.from_at
+                td = t.to_at
+      - else 
+        p N/A
+      strong Experiencia
+      - if @candidate.experience.any? {|x| !x["company"].empty?}
+        table.table
+          thead
+            tr
+              th Empresa
+              th Puesto
+              th Desde
+              th Hasta
+              th Salario
+          tbody
+            - @candidate.experience&.each do |e|
+              tr
+                td = e["company"]
+                td = e["job"]
+                td = e["from"]
+                td = e["to"]
+                td = e["wage"]
+      - else
+        p N/A  
+      - if !@candidate.employee.nil?
+        p 
+          strong Contratado en puesto:
+          = @candidate.employee.job.name

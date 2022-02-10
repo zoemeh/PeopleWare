@@ -1,9 +1,9 @@
 h1 = t('listing jobs')
 = link_to t('new job').titleize, new_job_path, class: 'btn btn-primary'
 ul.nav.nav-tabs
-  li.nav-item = link_to t("all"), jobs_path, class: "nav-link #{(current_page?(jobs_path) ? "active" : "")}"
-  li.nav-item = link_to t("fulfilled"), jobs_fulfilled_path, class: "nav-link #{(current_page?(jobs_fulfilled_path) ? "active" : "")}"
-  li.nav-item = link_to t("unfulfilled"), jobs_unfulfilled_path, class: "nav-link #{(current_page?(jobs_unfulfilled_path) ? "active" : "")}"
+  li.nav-item = link_to "Todos", jobs_path, class: "nav-link #{(current_page?(jobs_path) ? "active" : "")}"
+  li.nav-item = link_to "Contratados", jobs_fulfilled_path, class: "nav-link #{(current_page?(jobs_fulfilled_path) ? "active" : "")}"
+  li.nav-item = link_to "Disponibles", jobs_unfulfilled_path, class: "nav-link #{(current_page?(jobs_unfulfilled_path) ? "active" : "")}"
 table.table
   thead
     tr

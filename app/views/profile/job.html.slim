@@ -1,0 +1,14 @@
+p#notice = notice
+.card
+  .card-body 
+    h5.card-title = "#{t('job').titleize}: #{@job.name}"
+    .card-text
+      p
+        strong = t("name").capitalize
+        | :
+        = @job.name
+
+      p 
+        strong Departamento
+        | :
+        = @job.department.name

@@ -1,2 +1,10 @@
-= link_to "Nuevo Ingreso", reports_new_employees_path 
-= link_to "Candidatos", reports_candidates_path
+.card
+    .card-body
+        h5.card-title Reporte nuevos ingresos 
+        form action=reports_new_employees_path(format: :xlsx) method="POST"
+            .mb-3
+                label.form-label Desde
+                input.form-control type="date" name="start"
+                label.form-label Hasta
+                input.form-control type="date" name="end"
+            button.btn.btn-primary type="submit" Generar

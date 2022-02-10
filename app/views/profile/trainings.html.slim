@@ -1,0 +1,29 @@
+h1 = t('listing trainings').titleize
+
+table.table
+  thead
+    tr
+      th = t('activerecord.attributes.training.description').titleize
+      th = t('activerecord.attributes.training.level').titleize
+      th = t('activerecord.attributes.training.from_at').titleize
+      th = t('activerecord.attributes.training.to_at').titleize
+      th = t('activerecord.attributes.training.institution').titleize
+      th
+      th
+      th
+
+  tbody
+    - @trainings.each do |training|
+      tr
+        td = training.description
+        td = t(training.level)
+        td = training.from_at
+        td = training.to_at
+        td = training.institution
+        td = link_to 'Mostrar', training, class: "btn btn-primary"
+        td = link_to 'Editar', edit_training_path(training), class: "btn btn-success"
+        td = button_to 'Eliminar', training, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
+
+br
+
+= link_to t('new training').titleize, new_training_path, class: "btn btn-primary"

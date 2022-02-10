@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'profile/index'
+  get 'profile/job'
+  get 'profile/trainings'
+  get 'profile/experience'
   resources :departments
   get 'reports/index'
   get 'reports/new_employees'

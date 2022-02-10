@@ -1,10 +1,14 @@
+
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: %i[ show edit update destroy ]
   before_action :require_login
+  skip_before_action :require_login, only: [:new, :create]
+
 
   # GET /candidates or /candidates.json
   def index
-    @candidates = Candidate.all
+    @candidates = Candidate.search(params["buscar"])
+    @buscar = params[:buscar]
   end
 
   # GET /candidates/1 or /candidates/1.json
@@ -30,7 +34,16 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new(candidate_params)
     respond_to do |format|
       if @candidate.save
-        format.html { redirect_to candidate_url(@candidate), notice: "Candidate was successfully created." }
+        if (!signed_in?)
+          sign_in(@candidate.user)
+        end
+        format.html { 
+          if current_user.group == "admins"
+            redirect_to candidate_url(@candidate) 
+          else
+            redirect_to profile_index_url 
+          end
+        }
         format.json { render :show, status: :created, location: @candidate }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +56,13 @@ class CandidatesController < ApplicationController
   def update
     respond_to do |format|
       if @candidate.update(candidate_params)
-        format.html { redirect_to candidate_url(@candidate), notice: "Candidate was successfully updated." }
+        format.html { 
+          if current_user.group == "admins"
+          redirect_to candidate_url(@candidate), notice: "Candidado actualizado" 
+          else
+          redirect_to profile_index_path, notice: "Candidado actualizado"
+          end
+        }
         format.json { render :show, status: :ok, location: @candidate }
       else
         format.html { render :edit, status: :unprocessable_entity }
