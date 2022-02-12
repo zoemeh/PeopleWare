@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  resources :passwords, controller: "clearance/passwords", only: [:create, :new]
+  resource :session, controller: "clearance/sessions", only: [:create]
+
+  resources :users do
+    resource :password,
+      controller: "clearance/passwords",
+      only: [:edit, :update]
+  end
+  
+  get "/sign_in_candidate", to: "sessions#sign_in_candidate", as: "sign_in_candidate"
+  post "/sign_in_candidate", to: "sessions#do_sign_in_candidate"
+  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
+  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
+  get "/sign_up" => "clearance/users#new", as: "sign_up"
   get 'profile/index'
   get 'profile/job'
   get 'profile/trainings'
@@ -10,6 +24,7 @@ Rails.application.routes.draw do
   get 'reports/candidates'
   post 'reports/candidates', to: "reports#candidates_search"
   resources :employees
+  get '/candidates/advance_search', to: "candidates#advance_search", as: "advance_search"
   resources :candidates
   get 'backoffice/index'
   get "/jobs/fulfilled", to: "jobs#fulfilled"

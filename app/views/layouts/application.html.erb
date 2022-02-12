@@ -32,6 +32,7 @@
                   <li><a href="<%= candidates_path %>" class="nav-link <%= (current_page?(candidates_path) ? 'active' : '') %>">Candidatos</a></li>
                   <li><a href="<%= employees_path %>" class="nav-link <%= (current_page?(employees_path) ? 'active' : '') %>">Empleados</a></li>
                   <li><a href="<%= reports_index_path %>" class="nav-link <%= (current_page?(reports_index_path) ? 'active' : '') %>">Reportes</a></li>
+                  <li><a href="<%= users_path %>" class="nav-link <%= (current_page?(users_path) ? 'active' : '') %>">Usuarios</a></li>
                 <% elsif signed_in? %>
                   <li><a href="<%= profile_index_path %>" class="nav-link <%= (current_page?(profile_index_path) ? 'active' : '')%>">Perfil</a></li>
                   <li><a href="<%= profile_job_path %>" class="nav-link <%= (current_page?(profile_job_path) ? 'active' : '')%>">Puesto</a></li>

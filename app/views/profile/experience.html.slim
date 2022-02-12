@@ -1,17 +1,22 @@
-= simple_form_for(@candidate) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+p#notice = notice
+.card
+  .card-body 
+    h5.card-title Experiencia
+    .card-text
+      = simple_form_for(@candidate) do |f|
+        = f.error_notification
+        = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-    h3 = t('experience').capitalize
-  - (0..2).each do |i|
-    .input-group.mb-3
-      input.form-control type="text" placeholder="Empresa" name="candidate[experience][][company]" value=@candidate.experience[i]["company"]
-      input.form-control type="text" placeholder="Puesto Ocupado" name="candidate[experience][][job]" value=@candidate.experience[i]["job"]
-      span.input-group-text Desde
-      input.form-control type="date" placeholder="Desde" name="candidate[experience][][from]" value=@candidate.experience[i]["from"]
-      span.input-group-text Hasta
-      input.form-control type="date" placeholder="Hasta" name="candidate[experience][][to]" value=@candidate.experience[i]["to"]
-      input.form-control type="number" step="0.1" placeholder="Salario" name="candidate[experience][][wage]" value=@candidate.experience[i]["wage"]
+          h3 = t('experience').capitalize
+        - (0..2).each do |i|
+          .input-group.mb-3
+            input.form-control type="text" placeholder="Empresa" name="candidate[experience][][company]" value=@candidate.experience[i]["company"]
+            input.form-control type="text" placeholder="Puesto Ocupado" name="candidate[experience][][job]" value=@candidate.experience[i]["job"]
+            span.input-group-text Desde
+            input.form-control type="date" placeholder="Desde" name="candidate[experience][][from]" value=@candidate.experience[i]["from"]
+            span.input-group-text Hasta
+            input.form-control type="date" placeholder="Hasta" name="candidate[experience][][to]" value=@candidate.experience[i]["to"]
+            input.form-control type="number" step="0.1" placeholder="Salario" name="candidate[experience][][wage]" value=@candidate.experience[i]["wage"]
 
-  .form-actions.mb-3
-    = f.button :submit, "Guardar", class: 'btn btn-success'
+        .form-actions.mb-3
+          = f.button :submit, "Guardar", class: 'btn btn-success'

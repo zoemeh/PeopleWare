@@ -4,7 +4,7 @@
 
   .form-inputs.mb-3
     = f.input :description
-    = f.input :level
+    = f.input :level, collection: [["Grado", "grade"], ["Post-grado", "postgrade"], ["Maestria", "masters"], ["Doctorado", "phd"], ["Tecnico", "technical"], ["Gestion", "managment"]]
     = f.input :from_at
     = f.input :to_at
     = f.input :institution

@@ -7,8 +7,30 @@ class CandidatesController < ApplicationController
 
   # GET /candidates or /candidates.json
   def index
-    @candidates = Candidate.search(params["buscar"])
+    @candidates = Candidate.order(created_at: :desc).search(params["buscar"])
     @buscar = params[:buscar]
+  end
+
+  def advance_search
+    @buscar = params[:buscar]
+    @candidates = Candidate.search(params["buscar"])
+    @skills = params[:skills]
+    @languages = params[:languages]
+    @trainings = params[:trainings]
+    @job = params[:job]
+    unless params[:languages].nil?
+      @candidates = @candidates.joins(:languages).where("languages.id": params[:languages])
+    end
+    unless params[:skills].nil?
+      @candidates = @candidates.joins(:skills).where("skills.id": params[:skills])
+    end
+    unless @trainings.nil?
+      @candidates = @candidates.joins(:trainings).where("trainings.level": params[:trainings])
+    end
+    unless @job.nil? || @job == "0"
+      @candidates = @candidates.where(job_id: @job)
+    end
+    @candidates = @candidates.uniq
   end
 
   # GET /candidates/1 or /candidates/1.json
@@ -32,8 +54,10 @@ class CandidatesController < ApplicationController
   # POST /candidates or /candidates.json
   def create
     @candidate = Candidate.new(candidate_params)
+    binding.pry
     respond_to do |format|
       if @candidate.save
+        @candidate.trainings.each {|x| x.validate }
         if (!signed_in?)
           sign_in(@candidate.user)
         end
@@ -46,6 +70,7 @@ class CandidatesController < ApplicationController
         }
         format.json { render :show, status: :created, location: @candidate }
       else
+        @candidate.trainings.each {|x| x.validate }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @candidate.errors, status: :unprocessable_entity }
       end
@@ -55,6 +80,7 @@ class CandidatesController < ApplicationController
   # PATCH/PUT /candidates/1 or /candidates/1.json
   def update
     respond_to do |format|
+      @candidate.trainings.each {|x| x.validate }
       if @candidate.update(candidate_params)
         format.html { 
           if current_user.group == "admins"

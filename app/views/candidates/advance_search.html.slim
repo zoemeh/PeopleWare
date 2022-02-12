@@ -1,0 +1,76 @@
+h1 = t("listing candidates").titleize
+form.row.mb-2
+  .col-12.mb-2
+    input.form-control placeholder="Buscar" name="buscar"  value=@buscar
+  .col-6.mb-2
+    h5 Idiomas
+    - Language.all.each do |l|
+      .form-check 
+        input.form-check-input type="checkbox" value=l.id name="languages[]" checked=(@languages&.include?(l.id.to_s) ? true : nil)
+        label = l.name
+  .col-6.mb-2
+    h5 Competencias
+    - Skill.all.each do |s|
+      .form-check 
+        input.form-check-input type="checkbox" value=s.id name="skills[]" checked=(@skills&.include?(s.id.to_s) ? true : nil)
+        label = s.description
+  .col-6.mb-2.row
+    h5 Capacitaciones 
+    .col-6
+      .form-check 
+        input.form-check-input type="checkbox" name="trainings[]" value="grade" checked=(@trainings&.include?("grade") ? true : nil)
+        label Grado
+      .form-check 
+        input.form-check-input type="checkbox" name="trainings[]" value="postgrade" checked=(@trainings&.include?("postgrade") ? true : nil)
+        label Post-grado
+      .form-check 
+        input.form-check-input type="checkbox" name="trainings[]" value="masters" checked=(@trainings&.include?("masters") ? true : nil)
+        label Maestria
+    .col-6
+      .form-check 
+        input.form-check-input type="checkbox" name="trainings[]" value="phd" checked=(@trainings&.include?("phd") ? true : nil)
+        label Doctorado
+      .form-check 
+        input.form-check-input type="checkbox" name="trainings[]" value="technical" checked=(@trainings&.include?("technical") ? true : nil)
+        label Técnico
+      .form-check 
+        input.form-check-input type="checkbox" name="trainings[]" value="managment" checked=(@trainings&.include?("managment") ? true : nil)
+        label Gestión
+  .col-6.mb-2 
+    label.form-label Puesto
+    select.form-select.form-control name="job"
+      option value="0" selected=("selected" if @job == "0") Todos
+      - Job.all.each do |j|
+          option value=j.id selected=("selected" if @job == j.id.to_s) = j.name 
+  .col-12
+    button.btn.btn-secondary type="submit" Buscar
+table.table
+  thead
+    tr
+      th Cedula
+      th = t("activerecord.attributes.candidate.name").capitalize
+      th = t("activerecord.attributes.candidate.job").capitalize
+      th = t("activerecord.attributes.candidate.desired_wage").capitalize
+      th Departamento
+      th = t("activerecord.attributes.candidate.recommended_by").capitalize
+      th
+      th
+
+  tbody
+    - @candidates.each do |candidate|
+      tr
+        td = candidate.cedula
+        td = candidate.name
+        td = link_to candidate.job.name, candidate.job
+        td = candidate.desired_wage
+        td = candidate.job.department.name
+        td = candidate.recommended_by
+        td 
+          .btn-group
+            = link_to t('show').capitalize, candidate, class: "btn btn-primary"
+            = link_to t('edit').capitalize, edit_candidate_path(candidate), class: "btn btn-success"
+        td
+          = button_to t('destroy').capitalize, candidate, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
+br
+
+= link_to t('new candidate').titleize, new_candidate_path, class: "btn btn-primary"

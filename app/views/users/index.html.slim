@@ -1,0 +1,21 @@
+h1 Usuarios
+
+table.table
+  thead
+    tr
+      th = t('id').titleize
+      th Email
+      th
+      th
+
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.id
+        td = user.email
+        td = link_to t('edit').capitalize, edit_user_path(user), class: "btn btn-primary"
+        td = button_to t('destroy').capitalize, user, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger"
+
+br
+
+= link_to "Nuevo Usuario", new_user_path, class: "btn btn-primary"

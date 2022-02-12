@@ -5,4 +5,9 @@
       ul.nav.nav-tabs
         li.nav-item = link_to "Candidato", sign_in_candidate_path, class: "nav-link #{(current_page?(sign_in_candidate_path) ? "active" : "")}"
         li.nav-item = link_to "Reclutador", sign_in_path, class: "nav-link #{(current_page?(sign_in_path) ? "active" : "")}"
-      = render partial: '/sessions/form'
+    form method="POST" action=sign_in_candidate_path
+        .form-inputs.mb-3
+            label.form-label Cedula
+            input.form-control type="text" name="cedula"
+        .form-actions.mb-3
+            button.btn.btn-success type="submit" Entrar

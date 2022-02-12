@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
   def generate_new_employees
     @start = params[:start]
     @end = params[:end]
-    @employees = Employee.where("hired_date > :start AND hired_date < :end", start: @start, end: @end).order(hired_date: :asc)
+    @employees = Employee.where("hired_date >= :start AND hired_date <= :end", start: @start, end: @end).order(hired_date: :asc)
     respond_to do |format|
       format.xlsx { 
         response.headers['Content-Disposition'] = "attachment; filename=\"Nuevos Ingresos #{@start.to_s} A #{@end.to_s}.xlsx\""

@@ -106,3 +106,8 @@ es:
   all: todas
   fulfilled: completados
   unfulfilled: incompletados
+  grade: grado
+  postgrade: post-grado
+  phd: doctorado
+  technical: tecnico
+  managment: gestion

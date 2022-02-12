@@ -14,6 +14,8 @@
   h3 = t("trainings").capitalize
   - (@candidate.trainings + [Training.new]).each do |t|
     .mb-3
+      - t.errors.each do |error|
+        .alert.alert-danger = error.type
       .input-group.mb-3 
         input.form-control type="hidden" name="candidate[trainings_attributes][][id]" value=t.id
         span.input-group-text = t('activerecord.attributes.training.description').capitalize

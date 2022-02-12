@@ -1,7 +1,6 @@
-h1 Editing training
-
-== render 'form'
-
-=> link_to 'Show', @training
-'|
-=< link_to 'Back', trainings_path
+.card 
+    .card-body 
+        h1.card-title Editando Capacitacion
+        .card-text
+            == render 'form'
+            = link_to t('back').titleize, trainings_path, class: "btn btn-secondary"
